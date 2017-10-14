@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="datepicker">
+<head>
+    <meta charset="utf-8">
+    <title>datepicker(日期选择器)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="datepickerCtrl">
+
+<div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+<button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+<button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+<button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+<button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+</body>
+<script>
+    angular.module('datepicker', ['ngAnimate', 'ui.bootstrap']).controller('datepickerCtrl', function ($scope,$timeout) {
+        $scope.today = function() {
+            $scope.dt = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function() {
+            $scope.dt = null;
+        };
+
+        $scope.setDate = function(year, month, day) {
+            $scope.dt = new Date(year, month, day);
+        };
+        $scope.options = {
+            minDate: new Date(),
+            showWeeks: true
+        };
+        $scope.toggleMin = function() {
+            $scope.options.minDate = $scope.options.minDate ? null : new Date();
+        };
+
+
+    });
+</script>
+</html>

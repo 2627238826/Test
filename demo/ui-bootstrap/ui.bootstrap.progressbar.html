@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="progressbar">
+<head>
+    <meta charset="utf-8">
+    <title>dateparser(进度条)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="progressbarCtrl">
+
+<div class="row">
+    <div class="col-sm-4"><uib-progressbar value="55"></uib-progressbar></div>
+    <div class="col-sm-4"><uib-progressbar value="22" class="progress-striped" type="warning">22%</uib-progressbar></div>
+    <div class="col-sm-4"><uib-progressbar value="166" class="progress-striped active" max="200" type="danger"><i>166 / 200</i></uib-progressbar></div>
+</div>
+
+<button type="button" class="btn btn-sm btn-primary" ng-click="randoms()">随机</button><p></p>
+<div class="row">
+    <div class="col-sm-4"><uib-progressbar value="values" animate="false">{{values}}</uib-progressbar></div>
+    <div class="col-sm-4"><uib-progressbar value="values" animate="true" class="progress-striped" type="{{types}}">{{values}}%</uib-progressbar></div>
+    <div class="col-sm-4"><uib-progressbar value="values" class="progress-striped active" max="200" type="{{types}}"><i>{{values}} / 200</i></uib-progressbar></div>
+</div>
+
+</body>
+<script>
+    angular.module('progressbar', ['ngAnimate', 'ui.bootstrap']).controller('progressbarCtrl', function ($scope,$timeout) {
+
+        $scope.randoms =function(){
+            $scope.values=Math.floor(Math.random()*100 +1);
+            $scope.types;
+            if ($scope.values < 25) {
+                $scope.types = 'success';
+            } else if ($scope.values < 50) {
+                $scope.types = 'info';
+            } else if ($scope.values < 75) {
+                $scope.types = 'warning';
+            } else {
+                $scope.types = 'danger';
+            }
+
+        }
+
+
+    });
+</script>
+</html>

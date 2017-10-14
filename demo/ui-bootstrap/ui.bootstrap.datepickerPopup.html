@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="datepickerPopup">
+<head>
+    <meta charset="utf-8">
+    <title>datepickerPopup(日期选择器弹出)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="datepickerPopupCtrl">
+
+<div class="col-md-6">
+    <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+    </p>
+</div>
+</body>
+<script>
+    angular.module('datepickerPopup', ['ngAnimate', 'ui.bootstrap']).controller('datepickerPopupCtrl', function ($scope,$timeout) {
+
+        $scope.today = function() {
+            $scope.dt = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function() {
+            $scope.dt = null;
+        };
+
+        $scope.open2 = function() {
+            $scope.popup2.opened = true;
+        };
+
+        $scope.setDate = function(year, month, day) {
+            $scope.dt = new Date(year, month, day);
+        };
+
+        $scope.popup2 = {
+            opened: false
+        };
+
+
+    });
+</script>
+</html>

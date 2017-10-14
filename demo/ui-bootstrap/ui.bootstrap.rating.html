@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="rating">
+<head>
+    <meta charset="utf-8">
+    <title>dateparser(评级)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="ratingCtrl">
+
+<div><span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" ></span><i>{{rate}}</i></div>
+<div ng-init="x = 5"><span uib-rating ng-model="x" max="15" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" aria-labelledby="custom-icons-1"></span> <b>(<i>Rate:</i> {{x}})</b></div>
+<div ng-init="y = 2"><span uib-rating ng-model="y" rating-states="ratingStates" aria-labelledby="custom-icons-2"></span> <b>(<i>Rate:</i> {{y}})</b></div>
+</body>
+<script>
+    angular.module('rating', ['ngAnimate', 'ui.bootstrap']).controller('ratingCtrl', function ($scope,$timeout) {
+
+        $scope.rate = 5;
+        $scope.max = 10;
+        $scope.isReadonly = false;
+
+        $scope.hoveringOver = function(value) {
+            $scope.overStar = value;
+            $scope.percent = 100 * (value / $scope.max);
+        };
+
+        $scope.ratingStates = [
+            {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+            {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+            {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+            {stateOn: 'glyphicon-heart'},
+            {stateOff: 'glyphicon-off'}
+        ];
+    });
+</script>
+</html>

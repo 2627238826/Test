@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="modal">
+<head>
+    <meta charset="utf-8">
+    <title>modal(摸态框)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="ModalCtrl">
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">我是一个摸态框</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">
+                <a href="###" ng-click="$even.preventDefault();selected.items=item">{{item}}</a>
+            </li>
+        </ul>
+        选择{{selected.items}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="myModalContent2.html">
+    <div class="modal-header">
+        <h3 class="modal-title">我是一个摸态框2</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">
+                <a href="###" ng-click="$even.preventDefault();selected.items=item">{{item}}</a>
+            </li>
+        </ul>
+        选择{{selected.items}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<button type="button" class="btn btn-default" ng-click="open()">打开摸态框</button>
+<button type="button" class="btn btn-default" ng-click="open('lg')">大摸态框</button>
+<button type="button" class="btn btn-default" ng-click="open('sm')">小摸态框</button>
+<button type="button" class="btn btn-default" ng-click="toggleAnimation()">切换动画</button>
+</body>
+<script>
+    var app=angular.module('modal', ['ngAnimate', 'ui.bootstrap']).controller('ModalCtrl', function ($scope,$uibModal,$log) {
+
+        $scope.items=['item1','item2'];
+
+        $scope.animationsEnabled = true;
+        $scope.open=function(size){
+            var modalInstance=$uibModal.open({
+                animation:$scope.animationsEnabled,
+                templateUrl:'myModalContent.html',
+                controller:'ModalInstanceCtrl',
+                size:size,
+                backdrop:true,
+                resolve:{
+                    itemsData:function(){
+                        return $scope.items;
+                    }
+                }
+            })
+
+            modalInstance.result.then(function(selectedItem){
+                $scope.selected =selectedItem;
+            },function(){
+                $log.info('Modal dismissed at: ' + new Date());
+            })
+
+            $scope.toggleAnimation = function () {
+                $scope.animationsEnabled = !$scope.animationsEnabled;
+            };
+
+        }
+
+    })
+
+    app.controller('ModalInstanceCtrl',function($scope,$uibModalInstance,itemsData,$log,$uibModal){
+        $scope.items = itemsData;
+//        alert(itemsData)
+        $scope.selected = {
+            item: $scope.items[0]
+        };
+
+        $scope.ok = function () {
+            $uibModalInstance.close($scope.selected.item);
+            $log.info('点击了OK');
+            var modalInstance=$uibModal.open({
+                animation:$scope.animationsEnabled,
+                templateUrl:'myModalContent2.html',
+                controller:'ModalInstanceCtrl2',
+//                size:size,
+                backdrop:true,
+                resolve:{
+                    itemsData:function(){
+                        return $scope.items;
+                    }
+                }
+            })
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+            $log.info('点击了Cancel');
+        };
+    })
+
+    app.controller('ModalInstanceCtrl2',function($scope,$uibModalInstance,itemsData,$log,$uibModal){
+
+    })
+
+</script>
+</html>

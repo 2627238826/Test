@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="../js/angular.js"></script>
+</head>
+<body ng-app="Directive" ng-controller="DirectiveCtrl">
+
+ <my-directive>
+     <span ng-click="hello()">哈哈</span>
+ </my-directive>{{name}}
+</body>
+<script>
+    var app = angular.module('Directive',[])
+
+    app.run(function($templateCache){
+        $templateCache.put('index.html','<div>这是$templateCache内容</div>')
+    })
+
+    app.controller('DirectiveCtrl',function($scope,$log,remoteData){
+        remoteData.fu();
+    })
+    app.directive('myDirective',function(){
+        return{
+            restrict:'AECM',
+            repalce:false,
+            transclude:true,
+            template:'<strong><span ng-transclude></span>我的自定义指令</strong>',
+            link: function (scope, element, attr, ctrl) {
+                element.bind("click", function () {
+                    console.log("绑定点击事件");
+                });
+                element.append("<span>增加段落块</span>");
+                //设置样式
+                element.css("color", "green");
+            },
+            controller: function ($scope, $element, $attrs, $transclude) {
+                $scope.name = "tgor";
+                $scope.hello = function () {
+                    console.log("hello");
+                };
+            }
+        }
+    })
+    app.factory('remoteData', function() {
+        var data = {};
+        data.fun=function(){
+            alert("调用服务0！");
+        }
+        this.fu = function(){
+            alert("调用服务！");
+        }
+        return this;
+    });
+
+</script>
+</html>

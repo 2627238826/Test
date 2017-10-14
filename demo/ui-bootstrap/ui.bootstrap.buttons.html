@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="buttons">
+<head>
+    <meta charset="utf-8">
+    <title>button(按钮)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="buttonsCtrl">
+
+<div>
+    <button type="button" class="btn btn-primary" ng-model="single" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">按钮</button>
+    <span>{{single}}</span>
+</div><p></p>
+
+<div class="btn-group">
+    <label class="btn btn-primary" ng-model="checkModel.left" uib-btn-checkbox>Left</label>
+    <label class="btn btn-primary" ng-model="checkModel.middle" uib-btn-checkbox>middle</label>
+    <label class="btn btn-primary" ng-model="checkModel.right" uib-btn-checkbox>right</label>
+</div>
+<span>选中:{{checkModel}}-</span>
+<span>监听选中结果:{{checkResults}}</span>
+<p></p>
+<div class="btn-group">
+    <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable>Left</label>
+    <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'">Middle</label>
+    <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'" uib-uncheckable="uncheckable">Right</label>
+</div>
+<span>{{radioModel || 'null'}}</span>
+<div>
+    <button class="btn btn-default" ng-click="uncheckable = !uncheckable">
+        Toggle uncheckable
+    </button>
+</div>
+</body>
+<script>
+    angular.module('buttons', ['ngAnimate', 'ui.bootstrap']).controller('buttonsCtrl', function ($scope,$timeout) {
+        $scope.checkModel={
+            left:false,
+            middle:true,
+            right:false
+        }
+        $scope.checkResults = [];
+
+        $timeout(function(){
+            $scope.checkModel={
+                left:true,
+                middle:true,
+                right:true
+            }
+        },2000);
+
+
+        $scope.$watchCollection('checkModel', function () {
+            $scope.checkResults = [];
+            angular.forEach($scope.checkModel, function (value, key) {
+                if (value) {
+                    $scope.checkResults.push(key);
+                }
+            });
+        });
+
+        $scope.radioModel='Middle';
+
+    });
+</script>
+</html>

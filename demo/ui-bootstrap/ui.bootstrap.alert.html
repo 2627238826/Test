@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="aler">
+<head>
+    <meta charset="utf-8">
+    <title>alert(警报)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="alertsCtrl">
+
+<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'success')" close="closaAlert($index)">
+   {{alert.msg}}
+</div>
+<button type="button" class="btn btn-sm" ng-click="addAlert()">添加警告</button>
+</body>
+<script>
+    angular.module('aler', ['ngAnimate', 'ui.bootstrap']).controller('alertsCtrl', function ($scope) {
+        $scope.alerts=[{type:"success",msg:"警告信息1"},{type:"danger",msg:"警告信息2"}]
+
+        $scope.closaAlert=function(index){
+            $scope.alerts.splice(index,1);
+        }
+        $scope.addAlert=function(){
+            $scope.alerts.push({type:"warning",msg:"添加的警告"})
+        }
+
+
+    });
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="popover">
+<head>
+    <meta charset="utf-8">
+    <title>popover(弹出标题)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="popoverCtrl">
+<div style="height: 200px;"></div>
+<button uib-popover="弹出提示" popover-placement="bottom " popover-title="标题" type="button" class="btn btn-default">Dynamic Popover</button>
+<h4>Other</h4>
+<button popover-animation="true" uib-popover="I fade in and out!" type="button" class="btn btn-default">fading</button>
+<button uib-popover="I have a title!" popover-title="The title." type="button" class="btn btn-default">title</button>
+<button uib-popover="I am activated manually" popover-is-open="popoverIsOpen" ng-click="popoverIsOpen = !popoverIsOpen" type="button" class="btn btn-default">Toggle popover</button>
+<button uib-popover-html="htmlPopover" class="btn btn-default">HTML Popover</button>
+<button uib-popover-html="'<b>HTML</b>, <i>inline</i>'" class="btn btn-default">HTML Popover (inline)</button>
+</body>
+<script>
+    angular.module('popover', ['ngAnimate', 'ui.bootstrap']).controller('popoverCtrl', function ($scope,$timeout,$sce) {
+        $scope.htmlPopover = $sce.trustAsHtml('<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content');
+
+    });
+</script>
+</html>

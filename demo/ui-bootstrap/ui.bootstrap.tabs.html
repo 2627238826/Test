@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="tabs">
+<head>
+    <meta charset="utf-8">
+    <title>tabs(标签)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="tabsCtrl">
+
+<uib-tabset active="activePill" vertical="true" type="pills">
+    <uib-tab index="1" heading="内容1">内容1</uib-tab>
+    <uib-tab index="2" heading="内容2">内容2</uib-tab>
+</uib-tabset>
+<hr/>
+
+<uib-tabset active="activeJustified" justified="true">
+    <uib-tab index="0" heading="Justified" >Justified</uib-tab>
+    <uib-tab index="1" heading="SJ">SJ</uib-tab>
+    <uib-tab index="2" heading="Long" disable="true">SJ</uib-tab>
+</uib-tabset>
+</body>
+<script>
+    angular.module('tabs', ['ngAnimate', 'ui.bootstrap']).controller('tabsCtrl', function ($scope,$timeout) {
+
+
+    });
+</script>
+</html>

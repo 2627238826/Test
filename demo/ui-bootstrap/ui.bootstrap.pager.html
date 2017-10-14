@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="pager">
+<head>
+    <meta charset="utf-8">
+    <title>pager(分页数)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="pagerCtrl">
+
+<p>页数{{currentPage}}</p>
+<ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
+
+<h4>Default</h4>
+<ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+<ul uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+<ul uib-pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage"></ul>
+<ul uib-pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></ul>
+<pre>The selected page no: {{currentPage}}</pre>
+<button type="button" class="btn btn-info" ng-click="setPage(3)">Set current page to: 3</button>
+
+<hr />
+<h4>Limit the maximum visible buttons</h4>
+<h6><code>rotate</code> defaulted to <code>true</code>:</h6>
+<ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></ul>
+<h6><code>rotate</code> defaulted to <code>true</code> and <code>force-ellipses</code> set to <code>true</code>:</h6>
+<ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
+<h6><code>rotate</code> set to <code>false</code>:</h6>
+<ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false"></ul>
+<h6><code>boundary-link-numbers</code> set to <code>true</code> and <code>rotate</code> defaulted to <code>true</code>:</h6>
+<ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></ul>
+<h6><code>boundary-link-numbers</code> set to <code>true</code> and <code>rotate</code> set to <code>false</code>:</h6>
+<ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+<pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
+
+</body>
+<script>
+    angular.module('pager', ['ngAnimate', 'ui.bootstrap']).controller('pagerCtrl', function ($scope,$timeout) {
+        $scope.totalItems = 64;
+        $scope.currentPage = 4;
+
+        $scope.totalItems = 64;
+        $scope.currentPage = 4;
+
+        $scope.setPage = function (pageNo) {
+            $scope.currentPage = pageNo;
+        };
+
+        $scope.pageChanged = function() {
+            $log.log('Page changed to: ' + $scope.currentPage);
+        };
+
+        $scope.maxSize = 5;
+        $scope.bigTotalItems = 175;
+        $scope.bigCurrentPage = 1;
+    });
+</script>
+</html>

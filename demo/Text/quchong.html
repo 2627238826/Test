@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数组去重</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var hasRoles = [
+        {code:"10002",name:"农牧发货员"},
+        {code:"10003",name:"资料编辑员"},
+        {code:"10004",name:"电话会议灰度测试员"}
+    ];
+    var allRoles = [
+        {code:"10004",name:"电话会议灰度测试员"},
+        {code:"101",name:"超级管理员"},
+        {code:"102",name:"系统管理员"},
+        {code:"103",name:"部门管理员"},
+        {code:"1001",name:"医药代表"},
+        {code:"1002",name:"市场人员"},
+        {code:"1003",name:"数据管理员"},
+        {code:"1004",name:"财务主管"},
+        {code:"1005",name:"推广经理"},
+        {code:"1006",name:"分管品种审核员"},
+        {code:"10001",name:"农牧会员管理员"},
+        {code:"10002",name:"农牧发货员"},
+        {code:"10003",name:"资料编辑员"}
+    ];
+
+    //第一种方法
+    var allLen = allRoles.length,
+        hasLen = hasRoles.length;
+    allRolesCodeList =[];
+
+    for(var i = 0; i < allRoles.length; i++) {
+        allRolesCodeList.push(allRoles[i].code);
+    }
+
+    for(var i = 0; i < hasLen; i++) {
+        if(allRolesCodeList.indexOf(hasRoles[i].code) != -1) {
+            allRoles.splice(allRolesCodeList.indexOf(hasRoles[i].code),1);
+            allRolesCodeList.splice(allRolesCodeList.indexOf(hasRoles[i].code),1);
+        }
+    }
+
+    //第二种方法
+//    hasRoles = hasRoles.map(function(v) { return JSON.stringify(v) })
+//    allRoles = allRoles.map(function(v) { return JSON.stringify(v) })
+//
+//    for(var i = 0; i < hasRoles.length; i++) {
+//        allRoles.splice( allRoles.indexOf(hasRoles[i]), 1 )
+//    }
+
+
+
+    console.log(allRoles);
+
+</script>
+</body>
+</html>

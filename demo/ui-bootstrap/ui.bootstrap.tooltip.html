@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="tooltip">
+<head>
+    <meta charset="utf-8">
+    <title>tooltip(提示)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="tooltipCtrl">
+<hr>
+<span tooltip-placement="right" uib-tooltip="你好啊">提示</span>
+<hr>
+<select class="form-control" ng-model="placement.selected" ng-options="q as q for q in placement.options"></select><hr>
+<button tooltip-placement="{{placement.selected}}" uib-tooltip="On the {{placement.selected}}" type="button" class="btn btn-default">提示：{{placement.selected}}</button>
+<hr/>
+<input type="text" placeholder="点击我" uib-tooltip="这是提示信息！" tooltip-trigger="'focus'" tooltip-placement="bottom" class="form-control" />
+
+
+</body>
+<script>
+    angular.module('tooltip', ['ngAnimate', 'ui.bootstrap']).controller('tooltipCtrl', function ($scope,$timeout) {
+
+        $scope.placement = {
+            options: [
+                'top',
+                'top-left',
+                'top-right',
+                'bottom',
+                'bottom-left',
+                'bottom-right',
+                'left',
+                'left-top',
+                'left-bottom',
+                'right',
+                'right-top',
+                'right-bottom'
+            ],
+            selected: 'top'
+        };
+
+    });
+</script>
+</html>

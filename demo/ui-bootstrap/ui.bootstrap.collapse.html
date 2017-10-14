@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="collapse">
+<head>
+    <meta charset="utf-8">
+    <title>collapseCtrl(折叠)</title>
+</head>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/ui-bootstrap-tpls-2.0.1.js"></script>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<body ng-controller="collapseCtrl">
+
+<button type="button" class="btn btn-default" ng-click="isCollapseda =!isCollapseda">垂直切换</button><hr>
+<div uib-collapse="isCollapseda">
+   <div class="well well-lg">内容内容</div>
+</div>
+
+<button type="button" class="btn btn-default" ng-click="isCollapsedHorizontal  =!isCollapsedHorizontal ">横向切换</button><hr>
+<div uib-collapse="isCollapsedHorizontal " horizontal>
+    <div class="well well-lg">内容内容</div>
+</div>
+
+</body>
+<script>
+    angular.module('collapse', ['ngAnimate', 'ui.bootstrap']).controller('collapseCtrl', function ($scope,$timeout) {
+
+
+    });
+</script>
+</html>
