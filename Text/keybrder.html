@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+</head>
+<body>
+<input onkeydown="onkeydowns(event)">
+</body>
+
+<script>
+
+     function onkeydowns(event) {
+        event = event ? event : window.event ;
+        if(event.keyCode) {
+            console.log("123");
+        }
+    };
+
+</script>
+</html>

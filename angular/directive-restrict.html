@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令demo</title>
+    <script src="../js/angular.js"></script>
+</head>
+<body ng-app="app" ng-controller="directiveCtrl">
+
+
+    <test-directive>
+        我是原本的内容
+    </test-directive><!--E-->
+    <!--<div test-directive>这是原本的内容</div> &lt;!&ndash;A&ndash;&gt;-->
+    <!--<div class="test-directive">这是原本的内容</div> &lt;!&ndash;C&ndash;&gt;-->
+     <!--directive:test-directive  M 两边一定要留空格，不然什么都不会发生 -->
+
+</body>
+<script>
+    var app =angular.module('app',[])
+
+     //控制器
+     app.controller('directiveCtrl',function ($scope) {
+         $scope.name = 'hello';
+         $scope.save = function() {
+             console.log('is function save');
+         };
+     });
+
+    //指令
+    app.directive('testDirective',function () {
+        // 将对象return出去
+        return{
+            restrict: 'AECM',// 指令类型  E：element A：attribute M：comment C: class
+            replace: false, //这里replace为true，所以原来的内容会被template代替
+            transclude:true,
+            scope:false,
+            template: '<strong>我是自定义指令</strong><span ng-transclude></span>',
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+   //angular.bootstrap(document.body,['app']);//相当于我们在html中使用ng-app指令。推荐使用bootstarp而不是ng-app;
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-router.js"></script>
+</head>
+<body ng-app="myApp">
+<script type="text/ng-template" id="list.html">
+   <a href="#/1">详情</a>
+</script>
+<script type="text/ng-template" id="list2.html">
+    <a href="#/">首页</a>
+</script>
+<div>
+    <div>头部</div>
+    <div ng-view></div>
+    <div>尾部</div>
+</div>
+
+</body>
+<script>
+    var app = angular.module('myApp',['ngRoute'])
+    app.config(function($routeProvider){
+        $routeProvider.
+                when('/', {
+                    controller: 'myCtrl',
+                    templateUrl: 'list.html'
+                }).
+                when('/:id', {
+                    controller: 'myCtrl',
+                    templateUrl: 'list2.html'
+                })
+    })
+
+
+    app.controller('myCtrl',function($scope){
+
+    })
+</script>
+</html>

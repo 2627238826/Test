@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听</title>
+</head>
+<style>
+    .content{
+        height:1000px;
+        width:500px;
+        border: 1px solid red;
+    }
+</style>
+<body>
+
+<div class="content">123</div>
+
+<ul>
+    <li>123</li>
+    <li>456</li>
+    <li>789</li>
+</ul>
+
+</body>
+<script>
+    var i=0;
+    window.addEventListener('scroll',function(e){
+        console.log(i++);
+    },false);
+    window.addEventListener('click',function(){
+        console.log("点击我了");
+    },false);
+
+    //传统
+    for(var i=0;i<document.getElementsByTagName("li").length;i++){
+        (function (i) {
+            document.getElementsByTagName("li")[i].onclick=function () {
+                alert(document.getElementsByTagName("li")[i].innerHTML);
+            }
+        })(i)
+    }
+    //事件委托
+    document.getElementsByTagName("ul")[0].addEventListener('click',function (e) {
+        if(e.target.tagName==='LI'){
+            alert(e.target.innerHTML);
+        }
+    })
+    
+    
+
+
+</script>
+</html>

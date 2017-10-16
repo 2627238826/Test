@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<title>珠宝</title>
+	<link rel="stylesheet" type="text/css" href="css/jewelry.css"/>
+</head>
+<style>
+	body {
+		font: 12px/1.5 'Microsoft YaHei', Arial, Verdana,"\5b8b\4f53";
+		color: #666;
+		background: #fff;
+	}
+
+	a,address,b,big,blockquote,body,center,cite,code,dd,del,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,label,legend,li,ol,p,pre,small,span,strong,u,ul,var {
+		margin:0;
+		padding:0
+	}
+	article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+		display:block
+	}
+	hr {
+		-moz-box-sizing:content-box;
+		box-sizing:content-box;
+		height:0
+	}
+	button,html input[type=button],input[type=submit] {
+		-webkit-apperance:button;
+		cursor:pointer
+	}
+	button[disabled],html input[disabled] {
+		cursor:default
+	}
+	ol,ul {
+		list-style:none
+	}
+	img {
+		border:0;
+		vertical-align:middle
+	}
+	a {
+		color: #666;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #C81623;
+	}
+	em,i,u {
+		font-style:normal
+	}
+	.fl {
+		float:left
+	}
+	.fr {
+		float:right
+	}
+	.al {
+		text-align:left
+	}
+	.ac {
+		text-align:center
+	}
+	.ar {
+		text-align:right
+	}
+	.hide {
+		display:none
+	}
+	.clear, .clr {
+		display:block;
+		overflow:hidden;
+		clear:both;
+		height:0;
+		line-height:0;
+		font-size:0
+	}
+	.clearfix:after {
+		content:"";
+		display:block;
+		height:0;
+		clear:both;
+		visibility:hidden
+	}
+	.clearfix {
+		*zoom:1
+	}
+
+	.w {
+		margin: 0 auto;
+		width: 1200px;
+	}
+	.crumbs-bar {
+		position: relative;
+		padding-top: 15px;
+		margin-bottom: 5px;
+		z-index: 6;
+	}
+	.crumbs-nav {
+		line-height: 24px;
+		padding-right: 125px;
+	}
+	.crumbs-nav-item {
+		float: left;
+		margin-right: 5px;
+		margin-bottom: 5px;
+	}
+	.crumbs-first {
+		color: #999;
+		font-family: SimSun;
+	}
+	.crumbs-arrow {
+		float: left;
+		margin-right: 5px;
+		font-family: SimSun;
+		font-style: normal;
+	}
+	.crumb-select-item {
+		position: relative;
+		float: left;
+		height: 22px;
+		line-height: 22px;
+		border: 1px solid #DDD;
+		font-size: 12px;
+		vertical-align: top;
+		margin: 0 5px 5px 0;
+		padding: 0 26px 0 4px;
+		cursor: pointer;
+		background: #f3f3f3;
+	}
+	.crumb-select-item:hover {
+		border-color: #e4393c;
+		text-decoration: none;
+		background: #fff;
+	}
+	.crumb-select-item b {
+		font-weight: 400;
+		color: #333;
+	}
+	.crumb-select-item em {
+		color: #e4393c;
+	}
+	.crumb-select-item i {
+		display: block;
+		position: absolute;
+		width: 25px;
+		height: 22px;
+		right: 0;
+		top: 0;
+		background: url(../img/search_ele.png) no-repeat 7px -140px;
+	}
+	.crumb-select-item:hover i {
+		background-color: #e4393c;
+		background-position: 7px -158px;
+	}
+	.crumbs-nav-item {
+		float: left;
+		margin-right: 5px;
+		margin-bottom: 5px;
+	}
+	.crumbs-nav-item .search-key {
+		margin-left: 5px;
+	}
+
+
+	.flagshop3 {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.flagshop3 .shop-bd {
+		position: relative;
+		height: 84px;
+		padding: 8px 407px 8px 229px;
+		background: url(../img/bg_shop.png) no-repeat right top;
+	}
+	.flagshop3 .shop-logo {
+		position: absolute;
+		left: 9px;
+		top: 8px;
+		width: 204px;
+		height: 84px;
+		background: #fff;
+	}
+	.flagshop3 .shop-logo a {
+		display: block;
+		width: 180px;
+		height: 60px;
+		padding: 12px;
+	}
+	.flagshop3 .shop-logo img {
+		width: 180px;
+		height: 60px;
+		vertical-align: top;
+	}
+	.flagshop3 .sl-i-main {
+		width: 100%;
+		height: 84px;
+		overflow: hidden;
+	}
+	.flagshop3 .shop-name {
+		width: 100%;
+		height: 18px;
+		line-height: 18px;
+		margin-top: 12px;
+		margin-bottom: 8px;
+		overflow: hidden;
+	}
+	.flagshop3 .shop-name .title {
+		display: inline-block;
+		vertical-align: top;
+		font: 14px/18px;
+		color: #333;
+	}
+	.flagshop3 .shop-infor {
+		height: 18px;
+		font: 12px/18px;
+		color: #999;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.flagshop3 .shop-infor {
+		height: 18px;
+		font: 12px/18px;
+		color: #999;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.flagshop3 .sl-i-ext {
+		position: absolute;
+		right: 0;
+		top: 12px;
+		width: 378px;
+		height: 76px;
+	}
+	.flagshop3 .shop-score2 {
+		position: absolute;
+		left: 0;
+		top: 2px;
+		width: 232px;
+		height: 72px;
+		padding-right: 15px;
+	}
+	.flagshop3 .shop-score2 .score-infor {
+		height: 72px;
+		padding-left: 112px;
+	}
+	.flagshop3 .shop-score2 .score-infor .part, .flagshop3 .shop-score2 .score-infor .sum {
+		height: 24px;
+		line-height: 24px;
+	}
+	.flagshop3 .shop-score2 .score-infor .sum {
+		float: left;
+		width: 112px;
+		height: 72px;
+		line-height: 72px;
+		margin-left: -112px;
+	}
+	.flagshop3 .shop-score2 .score-infor .sum .tit {
+		font-size: 14px;
+		color: #333;
+	}
+	.flagshop3 .shop-score2 .score-infor .sum .num {
+		font-size: 14px;
+		color: #e4393c;
+	}
+	.flagshop3 .shop-score2 .score-infor .part .tit, .flagshop3 .shop-score2 .score-infor .sum .tit {
+		margin-right: 8px;
+	}
+	.flagshop3 .shop-score2 .score-infor .part .num, .flagshop3 .shop-score2 .score-infor .sum .num {
+		margin-right: 3px;
+	}
+	.i-add, .i-down, .i-medal, .i-up, .u-btn-focus .btnico {
+		display: inline-block;
+		background-image: url(../img/search_shop.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+	}
+	.i-up {
+		background-position: 0 -50px;
+		width: 9px;
+		height: 9px;
+		overflow: hidden;
+	}
+	.flagshop3 .shop-score2 .score-infor .i-down, .flagshop3 .shop-score2 .score-infor .i-up, .flagshop3 .shop-score2 .score-infor .num, .flagshop3 .shop-score2 .score-infor .tit {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.flagshop3 .shop-btn {
+		position: absolute;
+		left: 247px;
+		top: 0;
+		width: 100px;
+		height: 76px;
+	}
+	.m-focus {
+		display: inline-block;
+	}
+	.u-focus {
+		width: 70px;
+		padding: 0;
+		-webkit-transition: all .05s ease-in-out 0s;
+		-moz-transition: all .05s ease-in-out 0s;
+		transition: all .05s ease-in-out 0s;
+	}
+	.u-focus:hover {
+		color: #e4393c;
+		border-color: #e4393c;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+		background-color: #fff;
+		background-repeat: repeat-x;
+		background-image: -moz-linear-gradient(top,#fff,#fff);
+		background-image: -webkit-linear-gradient(top,#fff,#fff);
+		background-image: -o-linear-gradient(top,#fff,#fff);
+		background-image: linear-gradient(top,#fff,#fff);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
+	}
+	.u-btn-default, .u-btn-disable, .u-btn-focus, .u-btn-primary, .u-focus, div.tipwrap-conpon .tip-btnbox .btn-ok {
+		display: inline-block;
+		text-decoration: none;
+		border-radius: 2px;
+		text-align: center;
+		cursor: pointer;
+		line-height: 21px;
+		height: 21px;
+		padding: 0 8px;
+		border: 1px solid #DDD;
+		color: #666;
+		background-color: #f7f7f7;
+		background-repeat: repeat-x;
+		background-image: -moz-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: -webkit-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: -o-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: linear-gradient(top,#f7f7f7,#f2f2f2);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#f2f2f2', GradientType=0);
+	}
+	.flagshop3 .shop-btn .u-focus {
+		display: block;
+		width: 72px;
+		height: 31px;
+		line-height: 31px;
+		margin-bottom: 10px;
+	}
+	.u-btn-default .btnico, .u-btn-disable .btnico, .u-btn-focus .btnico, .u-btn-primary .btnico, .u-focus .btnico, div.tipwrap-conpon .tip-btnbox .btn-ok .btnico {
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 4px;
+	}
+	.u-focus .btnico {
+		width: 18px;
+		height: 18px;
+		margin-right: 2px;
+		overflow: hidden;
+		background: url(../img/search_ele.png) no-repeat 0 -413px;
+	}
+	.u-focus:hover .btnico {
+		background-position: 0 -436px;
+	}
+	.flagshop3 .shop-btn .u-focus .btnico {
+		vertical-align: middle;
+		margin-right: 5px;
+	}
+	.u-btn-default .btntxt, .u-btn-disable .btntxt, .u-btn-focus .btntxt, .u-btn-primary .btntxt, .u-focus .btntxt, div.tipwrap-conpon .tip-btnbox .btn-ok .btntxt {
+		height: 21px;
+		line-height: 21px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.flagshop3 .shop-btn .u-focus .btntxt {
+		vertical-align: middle;
+		height: 31px;
+		line-height: 31px;
+	}
+	.flagshop3 .shop-btn .shop-enter {
+		display: block;
+		width: 90px;
+		height: 33px;
+		line-height: 33px;
+		text-align: center;
+		background: #e4393c;
+		color: #fff;
+		border-radius: 3px;
+	}
+
+
+	/*-----------------------*/
+	.selector {
+		border-top: 1px solid #DDD;
+		background: #FFF;
+		margin-bottom: 10px;
+	}
+	.selector .s-brand, .selector .s-line {
+		width: auto;
+		height: auto;
+	}
+	.selector .s-brand {
+		_position: relative;
+	}
+	.selector .sl-wrap {
+		position: relative;
+		_zoom: 1;
+		line-height: 34px;
+		border-bottom: 1px solid #DDD;
+		background: #f3f3f3;
+	}
+	.selector .s-category .extend {
+		margin-top: -1px;
+		border: 1px solid #AAA;
+		background: #f9f9f9;
+	}
+	.selector .sl-key {
+		float: left;
+		width: 100px;
+		padding-left: 10px;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.selector .sl-value {
+		margin-left: 110px;
+		padding-right: 130px;
+		padding-left: 10px;
+		overflow: hidden;
+		zoom: 1;
+		background: #fff;
+	}
+	.selector .sl-v-list {
+		overflow: hidden;
+		zoom: 1;
+		padding-top: 4px;
+	}
+	.selector .sl-v-list li {
+		float: left;
+		_display: inline;
+		margin-right: 35px;
+		margin-bottom: 4px;
+		height: 26px;
+		line-height: 26px;
+	}
+	.selector .s-brand .sl-v-list li {
+		width: 130px;
+		margin-right: 5px;
+	}
+	.selector .s-category .sl-v-list li {
+		width: 130px;
+		margin-right: 5px;
+	}
+	.selector .sl-v-list li a {
+		float: left;
+		white-space: nowrap;
+		zoom: 1;
+		color: #005aa0;
+	}
+	.selector .sl-v-list li a:hover {
+		text-decoration: none;
+		color: #e4393c;
+	}
+	.selector .s-category .sl-v-list li a {
+		width: 130px;
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.selector .sl-btns {
+		display: none;
+		text-align: center;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+
+
+
+
+	.selector .sl-v-tab {
+		height: 35px;
+	}
+	.selector .sl-tab-trigger {
+		height: 25px;
+		padding-top: 5px;
+		overflow: hidden;
+	}
+	.selector .sl-tab-trigger .trig-item {
+		float: left;
+		height: 23px;
+		line-height: 23px;
+		padding: 0 3px 0 6px;
+		border: 1px solid #ddd;
+		background: #fff;
+		margin-right: 15px;
+	}
+	.selector .sl-tab-trigger .trig-item .text {
+		color: #005aa0;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.selector .sl-tab-trigger .trig-item .arrow {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		vertical-align: top;
+		background: url(../img/search_ele.png) no-repeat 4px 7px;
+	}
+	.selector .sl-tab-trigger .trig-item.trig-curr {
+		height: 24px;
+		border-color: #999;
+		border-bottom: medium none;
+		text-decoration: none;
+		position: relative;
+		z-index:99;
+	}
+	.selector .sl-tab-trigger .trig-item:hover {
+		border-bottom: none;
+		text-decoration: none;
+	}
+	.selector .sl-tab-trigger .trig-item.trig-curr .arrow {
+		background-position: 4px -27px;
+	}
+	.selector .sl-tab-cont-item {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 29px;
+		width: 1178px;
+		border: 1px solid #999;
+		padding: 10px;
+		background: #fff;
+		-webkit-box-shadow: 1px 1px 1px rgba(153,153,153,.3);
+		-moz-box-shadow: 1px 1px 1px rgba(153,153,153,.3);
+		box-shadow: 1px 1px 1px rgba(153,153,153,.3);
+		z-index: 98;
+	}
+	.selector .sl-v-list {
+		overflow: hidden;
+		zoom: 1;
+		padding-top: 4px;
+	}
+	.selector .sl-v-list ul {
+		float: left;
+		overflow: hidden;
+		zoom: 1;
+		position: relative;
+		height: 30px;
+	}
+	.selector .s-senior .sl-v-list ul {
+		height: auto;
+	}
+
+
+
+
+	.g-main2 {
+		margin-bottom: 10px;
+	}
+	.g-main2 .m-list {
+		float: right;
+		width: 100%;
+	}
+	.g-main2 .m-list .ml-wrap {
+		position: relative;
+		margin-left: 190px;
+		padding-bottom: 30px;
+	}
+	.filter {
+		position: relative;
+		z-index: 4;
+		_zoom: 1;
+		border-top: 1px solid #DDD;
+		margin-bottom: 5px;
+	}
+	.filter .f-line {
+		height: 25px;
+		padding: 6px 8px;
+		border-bottom: 1px solid #E7E3E7;
+		background: #F9F9F9;
+		zoom: 1;
+	}
+	.filter .f-line.top {
+		height: 25px;
+		background: #F1F1F1;
+	}
+	.filter .f-sort {
+		float: left;
+		margin-right: 24px;
+	}
+	.filter .f-sort a {
+		float: left;
+		position: relative;
+		padding: 0 10px;
+		height: 23px;
+		border: 1px solid #CCC;
+		line-height: 23px;
+		margin-right: -1px;
+		background: #FFF;
+		color: #333;
+	}
+	.filter .f-sort a.down, .filter .f-sort a.up {
+		position: relative;
+		padding-right: 20px;
+	}
+	.filter .f-sort a:hover {
+		position: relative;
+		text-decoration: none;
+		border-color: #e4393c;
+		color: #e4393c;
+	}
+	.filter .f-sort a.curr {
+		background: #e4393c;
+		color: #FFF;
+		border-color: #e4393c;
+	}
+	.filter .f-sort a i {
+		display: none;
+		position: absolute;
+		background: url(../img/search_ele.png) no-repeat -9999px -9999px;
+		top: 6px;
+		right: 5px;
+		width: 13px;
+		height: 12px;
+		overflow: hidden;
+		font-size: 0;
+	}
+	.filter .f-sort a.down i, .filter .f-sort a.up i {
+		display: block;
+	}
+	.filter .f-sort a.down i {
+		background-position: 0 -203px;
+	}
+	.filter .f-search {
+		float: left;
+		margin-right: 10px;
+	}
+	.input-txt {
+		height: 17px;
+		line-height: 17px;
+		border: 1px solid #CCC;
+		padding: 3px;
+		width: 145px;
+	}
+	.filter .f-search .btn, .filter .f-search .input-txt {
+		float: left;
+	}
+	.filter .f-search .input-txt {
+		width: 108px;
+		color: #999;
+	}
+	.btn {
+		display: inline-block;
+		line-height: 14px;
+		height: 14px;
+		border-radius: 2px;
+		background: #F7F7F7;
+		text-align: center;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	.btn-default {
+		border: 1px solid #DDD;
+		padding: 4px 13px 5px;
+		color: #666;
+		background-color: #f7f7f7;
+		background-repeat: repeat-x;
+		background-image: -moz-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: -webkit-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: -o-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: linear-gradient(top,#f7f7f7,#f2f2f2);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#f2f2f2', GradientType=0);
+	}
+
+	.filter .f-search .btn {
+		color: #333;
+		border: 1px solid #CCC;
+		border-radius: 0;
+		margin-left: -1px;
+	}
+	.filter .f-pager {
+		float: right;
+		font-size: 0;
+	}
+	.filter .f-pager .fp-text {
+		line-height: 23px;
+		margin-right: 10px;
+		font-size: 12px;
+		font-family: verdana;
+	}
+	.filter .f-pager .fp-text b, .filter .f-pager .fp-text em, .filter .f-pager .fp-text i {
+		font-weight: 400;
+		font-style: normal;
+	}
+	.filter .f-pager .fp-text b {
+		color: #e4393c;
+		font-weight: 700;
+	}
+	.filter .f-pager .fp-next, .filter .f-pager .fp-prev {
+		display: inline-block;
+		width: 46px;
+		height: 23px;
+		border: 1px solid #DDD;
+		background: #FFF;
+		line-height: 23px;
+		font-family: "\5b8b\4f53";
+		text-align: center;
+		font-size: 16px;
+		color: #AAA;
+	}
+	.filter .f-pager .fp-prev {
+		margin-right: -1px;
+	}
+	.filter .f-pager .fp-next.disabled, .filter .f-pager .fp-prev.disabled {
+		padding: 0;
+		background: #F1F1F1;
+		color: #CCC;
+		cursor: default;
+	}
+	.filter .f-result-sum {
+		float: right;
+		height: 25px;
+		line-height: 25px;
+		margin-right: 10px;
+		color: #999;
+	}
+	.filter .f-result-sum .num {
+		color: #666;
+		font-family: verdana;
+	}
+
+
+
+	.goods-list-v2 {
+		margin-bottom: 20px;
+		height: auto;
+		position: relative;
+		z-index: 1;
+		_zoom: 1;
+	}
+	.goods-list-v2 .gl-warp {
+		margin-right: -20px;
+		width: 1040px;
+		height: auto;
+	}
+	.goods-list-v2 .gl-item {
+		width: 240px;
+		height: 474px;
+		float: left;
+		position: relative;
+		z-index: 1;
+		_display: inline;
+		margin-right: 20px;
+		margin-top: 10px;
+	}
+	.goods-list-v2.gl-type-3 .gl-item {
+		height: 466px;
+	}
+	.goods-list-v2 .gl-item:hover {
+		z-index: 2;
+	}
+	.goods-list-v2 .gl-item .gl-i-wrap {
+		width: 220px;
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		background: #fff;
+		border: 1px solid #fff;
+		padding: 38px 9px 10px;
+		-webkit-transition: border-color .1s ease;
+		-moz-transition: border-color .1s ease;
+		transition: border-color .1s ease;
+	}
+	.goods-list-v2.gl-type-3 .gl-item:hover .gl-i-wrap {
+		border-color: #e9e9e9;
+		-webkit-box-shadow: 0 0 2px 2px #f8f8f8;
+		-moz-box-shadow: 0 0 2px 2px #f8f8f8;
+		box-shadow: 0 0 2px 2px #f8f8f8;
+	}
+	.goods-list-v2.gl-type-3 .gl-item .gl-i-wrap {
+		padding: 12px 9px;
+	}
+	.goods-list-v2 .gl-item .p-img {
+		height: 220px;
+		padding: 0;
+		margin-bottom: 15px;
+		position: relative;
+	}
+	.goods-list-v2.gl-type-3 .gl-item .p-img {
+		margin-bottom: 5px;
+	}
+	.goods-list-v2 .gl-item .p-img a {
+		display: block;
+		position: relative;
+		overflow: hidden;
+	}
+	img.err-poster, img.err-product {
+		background: url(../img/error.gif) no-repeat 50% 50%;
+	}
+	.goods-list-v2 .gl-item .p-scroll {
+		position: relative;
+		z-index: 2;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+	.goods-list-v2 .gl-item .p-scroll .ps-next, .goods-list-v2 .gl-item .p-scroll .ps-prev {
+		display: none;
+		position: absolute;
+		width: 20px;
+		height: 29px;
+		line-height: 29px;
+		text-align: center;
+		color: #aaa;
+		font-size: 16px;
+		font-family: "\5b8b\4f53";
+		cursor: pointer;
+	}
+	.goods-list-v2 .gl-item .p-scroll .ps-prev {
+		left: 2px;
+		top: 0;
+	}
+	.goods-list-v2 .gl-item .p-scroll .ps-next {
+		left: 196px;
+		top: 0;
+	}
+	.goods-list-v2 .gl-item .p-scroll .ps-wrap {
+		height: 29px;
+		overflow: hidden;
+		zoom: 1;
+	}
+	.goods-list-v2 .gl-item .p-scroll ul li {
+		float: left;
+		width: 34px;
+		height: 29px;
+		text-align: left;
+	}
+	.goods-list-v2 .gl-item .p-scroll ul li a {
+		cursor: default;
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		border: 1px solid #ddd;
+		padding: 1px;
+	}
+	.goods-list-v2 .gl-item .p-scroll ul li a.curr {
+		padding: 0;
+		border-width: 2px;
+		border-color: #e4393c;
+	}
+	.goods-list-v2 .gl-item .p-scroll ul li a img {
+		width: 25px;
+		height: 25px;
+	}
+	.goods-list-v2 .gl-item .p-price {
+		position: relative;
+		line-height: 22px;
+		height: 22px;
+		overflow: hidden;
+		width: 100%;
+		margin: 0 0 8px;
+	}
+	.p-price strong {
+		color: #e4393c;
+		font-weight: 400;
+		font-family: Verdana;
+	}
+	.goods-list-v2 .gl-item .p-price strong {
+		float: left;
+		margin-right: 10px;
+		color: #e4393c;
+		font-size: 20px;
+	}
+	.goods-list-v2 .gl-item .p-price strong em {
+		font-size: 16px;
+	}
+	.goods-list-v2 .gl-item .p-price strong i {
+		font-style: normal;
+	}
+	.goods-list-v2 .gl-item .p-name {
+		height: 40px;
+		margin-bottom: 8px;
+		overflow: hidden;
+	}
+	.goods-list-v2.gl-type-3 .gl-item .p-name {
+		height: 20px;
+		line-height: 20px;
+	}
+	.goods-list-v2.gl-type-3 .gl-item .p-name-type-2 {
+		height: 40px;
+	}
+	.goods-list-v2 .gl-item.hover .gl-i-wrap .p-name a {
+		text-decoration: none;
+	}
+	.goods-list-v2 .gl-item .p-name em, .goods-list-v2 .gl-item .p-name i {
+		display: block;
+		height: 20px;
+		line-height: 20px;
+		overflow: hidden;
+		-webkit-transition: height .08s ease;
+		-moz-transition: height .08s ease;
+		transition: height .08s ease;
+	}
+	.goods-list-v2 .gl-item .p-name-type-2 em, .goods-list-v2 .gl-item .p-name-type-2 i {
+		display: inline;
+	}
+	.goods-list-v2.gl-type-3 .gl-item .p-name em, .goods-list-v2.gl-type-3 .gl-item .p-name i {
+		display: inline;
+		height: auto;
+	}
+	.sk-label, .skcolor_ljg {
+		color: #e4393c;
+	}
+	.goods-list-v2 .gl-item .p-commit {
+		width: 100%;
+		height: 18px;
+		margin-top: -3px;
+		margin-bottom: 9px;
+		overflow: hidden;
+	}
+	.goods-list-v2 .gl-item .p-commit strong {
+		color: #a7a7a7;
+		font-weight: 400;
+	}
+	.goods-list-v2 .gl-item .p-commit strong a {
+		color: #005aa0;
+		font-family: verdana;
+		font-weight: 700;
+	}
+	.goods-list-v2 .gl-item .p-focus {
+		position: absolute;
+		left: 172px;
+		top: 236px;
+		visibility: hidden;
+		z-index: 4;
+		opacity: 0;
+		_width: 58px;
+		-webkit-transition: top .3s ease,opacity .1s ease .1s;
+		-moz-transition: top .3s ease,opacity .1s ease .1s;
+		transition: top .3s ease,opacity .1s ease .1s;
+	}
+	.goods-list-v2 .gl-item:hover .gl-i-wrap .p-focus {
+		top: 207px;
+		opacity: 1;
+		visibility: visible;
+	}
+	.goods-list-v2 .gl-item .p-addtocart a, .goods-list-v2 .gl-item .p-compare a, .goods-list-v2 .gl-item .p-focus a, .goods-list-v2 .gl-item .p-notification a, .goods-list-v2 .gl-item .p-rushbuy a {
+		position: relative;
+		display: inline-block;
+		height: 23px;
+		line-height: 23px;
+		padding: 0 8px 0 25px;
+		border: 1px solid #ddd;
+		background: #fff;
+	}
+	.goods-list-v2 .gl-item .p-focus a {
+		height: 25px;
+		line-height: 25px;
+		color: #fff;
+		border: medium none;
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#B2000000', endColorstr='#B2000000');
+		background: rgba(0,0,0,.7);
+	}
+	.goods-list-v2 .gl-item .p-addtocart a i, .goods-list-v2 .gl-item .p-compare a i, .goods-list-v2 .gl-item .p-focus a i, .goods-list-v2 .gl-item .p-notification a i, .goods-list-v2 .gl-item .p-rushbuy a i {
+		position: absolute;
+		display: block;
+		font-style: normal;
+		left: 4px;
+		top: 3px;
+		width: 18px;
+		height: 18px;
+		background: url(../img/search_ele.png) no-repeat 9999px 9999px;
+		-webkit-transition: background-position .15s ease-in-out;
+		-moz-transition: background-position .15s ease-in-out;
+		transition: background-position .15s ease-in-out;
+	}
+	.goods-list-v2 .gl-item .p-focus a i {
+		background-position: 0 -413px;
+		-webkit-transition: transform .2s ease-in-out .1s;
+		-moz-transition: transform .2s ease-in-out .1s;
+		transition: transform .2s ease-in-out .1s;
+	}
+	.goods-list-v2 .gl-item .p-focus a:hover i {
+		background-position: 0 -436px;
+		-webkit-animation: heartPulse .8s ease-out infinite;
+		-moz-animation: heartPulse .8s ease-out infinite;
+		animation: heartPulse .8s ease-out infinite;
+	}
+	.goods-list-v2 .gl-item .p-addtocart a:hover, .goods-list-v2 .gl-item .p-compare a:hover, .goods-list-v2 .gl-item .p-focus a:hover, .goods-list-v2 .gl-item .p-notification a:hover, .goods-list-v2 .gl-item .p-rushbuy a:hover {
+		color: #e4393c;
+		border-color: #e4393c;
+		text-decoration: none;
+	}
+
+
+
+	.notice-loading-more {
+		height: 50px;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.notice-loading-more span {
+		display: block;
+		width: 150px;
+		height: 48px;
+		line-height: 48px;
+		padding-left: 48px;
+		margin: 0 auto;
+		background: url(../img/loading.gif) no-repeat 0 10px;
+		text-align: left;
+		color: #f60;
+	}
+	.page {
+		margin-bottom: 10px;
+	}
+	.page .p-wrap {
+		float: right;
+	}
+	.page .p-num {
+		float: left;
+	}
+	.page .p-num a, .page .p-num b {
+		float: left;
+		height: 36px;
+		line-height: 36px;
+		padding: 0 14px;
+		margin-right: 5px;
+		font-size: 14px;
+	}
+	.page .p-num a {
+		color: #333;
+		border: 1px solid #ddd;
+		background-color: #f7f7f7;
+		background-repeat: repeat-x;
+		background-image: -moz-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: -webkit-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: -o-linear-gradient(top,#f7f7f7,#f2f2f2);
+		background-image: linear-gradient(top,#f7f7f7,#f2f2f2);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#f2f2f2', GradientType=0);
+	}
+	.page .p-num .pn-next.disabled, .page .p-num .pn-prev.disabled {
+		background: 0 0;
+		background: #fff;
+		cursor: default;
+	}
+	.page .p-num .pn-next i, .page .p-num .pn-prev i {
+		vertical-align: middle;
+		font-style: normal;
+		font-size: 16px;
+		font-family: "\5b8b\4f53";
+		padding: 0 5px;
+		color: #aaa;
+	}
+	.page .p-num .pn-next.disabled em, .page .p-num .pn-next.disabled i, .page .p-num .pn-prev.disabled em, .page .p-num .pn-prev.disabled i {
+		color: #ccc;
+	}
+	.page .p-num a.curr {
+		border: 0 none;
+		padding: 1px 15px;
+		background: 0 0;
+		filter: none;
+		color: #e4393c;
+		cursor: default;
+	}
+	.page .p-num .pn-break {
+		color: #ccc;
+	}
+	.page .p-num .pn-next i {
+		padding-right: 0;
+	}
+	.page .p-skip {
+		float: left;
+		margin-left: 20px;
+	}
+	.page .p-skip em {
+		float: left;
+		line-height: 38px;
+		font-size: 14px;
+	}
+	.input-txt {
+		height: 17px;
+		line-height: 17px;
+		border: 1px solid #CCC;
+		padding: 3px;
+		width: 145px;
+	}
+	.page .p-skip .input-txt {
+		float: left;
+		width: 30px;
+		height: 30px;
+		margin: 0 3px;
+		line-height: 30px;
+		font-size: 14px;
+		text-align: center;
+	}
+	.page .p-skip em {
+		float: left;
+		line-height: 38px;
+		font-size: 14px;
+	}
+	.page .p-skip .btn {
+		float: left;
+		height: 27px;
+		margin-left: 10px;
+		font-size: 14px;
+		line-height: 27px;
+	}
+
+
+
+	.g-main2 .m-aside {
+		float: right;
+		width: 180px;
+		margin-right: -180px;
+		position: relative;
+		_display: inline;
+	}
+	.aside-bar {
+		background: #fff;
+		_width: 100%;
+	}
+	.u-ad-wrap {
+		position: relative;
+	}
+	.aside-bar .ab-goods {
+		display: none;
+		border: 1px solid #ddd;
+		margin-bottom: 10px;
+	}
+	.m, .mb, .mc, .mt, .sm, .smb, .smc, .smt {
+		overflow: hidden;
+		zoom: 1;
+	}
+	.aside-bar .ab-goods .mt {
+		line-height: 36px;
+		padding-left: 10px;
+		margin-bottom: 10px;
+	}
+	.aside-bar .ab-goods .mt h2, .aside-bar .ab-goods .mt h3 {
+		font-family: "microsoft yahei";
+		font-size: 14px;
+	}
+	.aside-bar .ab-goods .mc li {
+		padding-left: 9px;
+		padding-right: 9px;
+		margin-bottom: 20px;
+	}
+	.aside-bar .ab-goods .mc li .p-img {
+		height: 160px;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+	.aside-bar .ab-goods .mc li .p-price {
+		height: 20px;
+		line-height: 20px;
+		overflow: hidden;
+		margin-bottom: 8px;
+		padding: 0 10px;
+	}
+	.p-price strong {
+		color: #e4393c;
+		font-weight: 400;
+		font-family: Verdana;
+	}
+	.aside-bar .ab-goods .mc li .p-price strong {
+		font-size: 14px;
+	}
+	.aside-bar .ab-goods .mc li .p-price i {
+		font-style: normal;
+	}
+	.aside-bar .ab-goods .mc li .p-name {
+		line-height: 18px;
+		height: 36px;
+		overflow: hidden;
+		padding: 0 10px;
+	}
+
+
+
+
+
+	.u-ad-wrap {
+		position: relative;
+	}
+	.m-box-s1 {
+		border: 1px solid #ddd;
+		margin-bottom: 10px;
+	}
+	.u-ad {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		width: 20px;
+		height: 11px;
+		overflow: hidden;
+		background: url(../img/u-ad.gif) no-repeat;
+	}
+	.m-box-s1 .mt {
+		padding: 6px;
+		height: 21px;
+		line-height: 21px;
+	}
+	.m-box-s1 .mt .mt-title {
+		font-weight: 400;
+		font-size: 14px;
+		font-family: "microsoft yahei";
+	}
+	.goods-chosen-list {
+		height: 306px;
+		padding-left: 26px;
+		overflow: hidden;
+	}
+	.goods-chosen-list li {
+		float: left;
+		width: 210px;
+		height: 286px;
+		padding: 0 24px 20px 0;
+		overflow: hidden;
+	}
+	.goods-chosen-list .p-img {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	.goods-chosen-list .p-img img {
+		width: 190px;
+		height: 190px;
+	}
+	.goods-chosen-list .p-name {
+		height: 36px;
+		line-height: 18px;
+		margin-bottom: 12px;
+		overflow: hidden;
+		display: block;
+	}
+	.goods-chosen-list .p-price {
+		height: 16px;
+		line-height: 16px;
+		margin-bottom: 4px;
+		overflow: hidden;
+	}
+	.goods-chosen-list .p-price .price {
+		float: left;
+		margin-right: 10px;
+		color: #e4393c;
+		font-weight: 700;
+		font-family: verdana;
+		font-size: 14px;
+	}
+	.goods-chosen-list .p-review {
+		color: #999;
+	}
+	.goods-chosen-list .p-review .number {
+		color: #005aa0;
+	}
+
+
+
+
+
+	.bottom-search {
+		background: #F9F9F9;
+		border: 1px solid #DDD;
+		padding: 15px 0 20px 40px;
+		margin-bottom: 10px;
+	}
+	.form-group .fg-line {
+		position: relative;
+		line-height: 28px;
+		width: auto;
+		height: auto;
+		zoom: 1;
+	}
+	.bottom-search .search-ext {
+		padding-right: 20px;
+		margin-bottom: 10px;
+	}
+	.bottom-search .form-group .fg-line {
+		padding-left: 88px;
+	}
+	.form-group .fg-line-key {
+		float: left;
+		width: 120px;
+	}
+	.bottom-search .form-group .fg-line-key {
+		width: 88px;
+		margin-left: -88px;
+		color: #333;
+	}
+	.bottom-search .form-group .fg-line-value {
+		width: 100%;
+		margin-left: 0;
+	}
+	.bottom-search .search-ext .fg-line-value {
+		height: 28px;
+		overflow: hidden;
+	}
+	.bottom-search .search-ext .fg-line-value a {
+		float: left;
+		color: #005aa0;
+	}
+	.bottom-search .search-ext .fg-line-value b {
+		float: left;
+		width: 20px;
+		font: 12px/28px SimSun;
+		color: #CCC;
+		text-align: center;
+	}
+	.form-group .fg-line:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: "";
+		clear: both;
+		height: 0;
+	}
+	.input-XL {
+		width: 225px;
+		height: 28px;
+		line-height: 28px;
+		font-size: 14px;
+	}
+	.bottom-search .re-search .fg-line-value .input-txt {
+		vertical-align: top;
+		width: 400px;
+	}
+	.btn-primary {
+		border: 0;
+		padding: 5px 15px 6px;
+		color: #FFF;
+		background-color: #E74649;
+		background-repeat: repeat-x;
+		background-image: -moz-linear-gradient(top,#E74649,#DF3033);
+		background-image: -webkit-linear-gradient(top,#E74649,#DF3033);
+		background-image: -o-linear-gradient(top,#E74649,#DF3033);
+		background-image: linear-gradient(top,#E74649,#DF3033);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E74649', endColorstr='#DF3033', GradientType=0);
+	}
+	.bottom-search .re-search .fg-line-value .btn-XL {
+		height: 25px;
+		line-height: 25px;
+		margin-left: 5px;
+		font-size: 14px;
+		font-weight: bolder;
+		width: 40px;
+	}
+	.bottom-search .re-search .fg-line-value .btn-XL:hover {
+		color: #fff;
+	}
+	.bottom-search .re-search .fg-line-value .link {
+		color: #005aa0;
+		margin-left: 20px;
+	}
+
+
+	.footmark .m {
+		padding: 0 9px;
+		border: 1px solid #ddd;
+		border-top: 2px solid #999;
+	}
+	.m, .mb, .mc, .mt, .p-detail, .p-img, .p-market, .p-name, .p-price, .sm, .smb, .smc, .smt {
+		overflow: hidden;
+	}
+	.footmark .mt {
+		height: 30px;
+		line-height: 30px;
+	}
+	.footmark .title {
+		width: 50%;
+		float: left;
+		font: 14px/30px "Microsoft YaHei";
+	}
+	.footmark .extra {
+		width: 50%;
+		float: right;
+		text-align: right;
+	}
+	.footmark .may-like .change {
+		display: inline-block;
+	}
+	.footmark .may-like .change .ico, .may-like .change .txt {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.footmark .may-like .change .ico {
+		width: 16px;
+		height: 16px;
+		margin-right: 5px;
+		background: url(../img/update.png) no-repeat;
+	}
+	.footmark .may-like .mc {
+		height: 246px;
+		overflow: hidden;
+	}
+	.footmark .may-like-list {
+		padding-top: 15px;
+		margin-right: -10px;
+	}
+	.footmark .may-like-list li {
+		width: 150px;
+		height: 216px;
+		float: left;
+		margin: 0 8px 0 0;
+		padding: 0 18px 15px;
+		text-align: center;
+	}
+	.footmark .may-like-list .p-img img {
+		width: 130px;
+		height: 130px;
+	}
+	.footmark .may-like-list .p-name {
+		height: 36px;
+	}
+	.footmark .may-like-list .p-review {
+		line-height: 20px;
+	}
+	.footmark .may-like-list .p-review a {
+		color: #005ea7;
+	}
+	.footmark .may-like-list .p-price {
+		line-height: 20px;
+		color: #e3393c;
+	}
+</style>
+<body>
+<div id="C_searchWrap" class="w">
+	<div id="C_crumbsBar" class="crumbs-bar">
+		<div class="crumbs-nav">
+			<div class="crumbs-nav-main clearfix">
+				<div class="crumbs-nav-item">
+					<div class="crumbs-first">
+						<a href="search?keyword=%E5%91%A8%E7%94%9F%E7%94%9F&enc=utf-8&qrst=1&rt=1&stop=1&lastprice=13000gt&vt=2&offset=2&bs=1&wq=%E5%91%A8%E7%94%9F%E7%94%9F">全部结果</a>
+					</div>
+				</div>
+				<i class="crumbs-arrow">&gt;</i>
+				<a class="crumb-select-item" href="search?keyword=%E5%91%A8%E7%94%9F%E7%94%9F&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;bs=1&amp;wq=%E5%91%A8%E7%94%9F%E7%94%9F&amp;uc=0#Q_crumbsBar" rel="nofollow" title="周生生（CHOW SANG SANG）"><b>品牌：</b><em>周生生（CHOW SANG SANG）</em><i></i></a>
+				<i class="crumbs-arrow">&gt;</i>
+				<div class="crumbs-nav-item">
+					<strong class="search-key">"周生生"</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="C_boxSearch" style="display:none;"></div>
+	<div class="flagshop3">
+		<div class="shop-bd">
+			<div class="shop-logo">
+				<a href="//mall.jd.com/index-31701.html" onclick="searchlog(1,31701,0,58,'','shopClk=1')" target="_blank">
+					<!--<img data-img="1" width="180" height="60" data-lazy-img="done" src="//misc.360buyimg.com/lib/img/e/blank.gif" class="err-product">-->
+					<img data-img="1" width="180" height="60" data-lazy-img="done" src="" class="err-product">
+				</a>
+			</div>
+			<div class="sl-i-main">
+				<div class="shop-name">
+					<a href="//mall.jd.com/index-31701.html" onclick="searchlog(1,31701,0,58,'','shopClk=1')" target="_blank" class="title">周生生京东旗舰店</a>
+				</div>
+				<div class="shop-infor">主营品牌：周生生（CHOW SANG SANG）</div>
+				<div class="shop-infor">店铺简介：周而复始 生生不息</div>
+			</div>
+			<div class="sl-i-ext">
+				<dl class="shop-score2">
+					<dd class="score-infor">
+						<div class="sum"><span class="tit">综合评分</span><em class="num Q_total_score">9.63</em></div>
+						<div class="part"><span class="tit">商品评价</span><em class="num Q_ware_score">9.6</em><i class="i-up"></i></div>
+						<div class="part"><span class="tit">服务态度</span><em class="num Q_service_score">9.6</em><i class="i-up"></i></div>
+						<div class="part"><span class="tit">物流速度</span><em class="num Q_effective_score">9.64</em><i class="i-up"></i></div>
+					</dd>
+				</dl>
+				<div class="shop-btn">
+							<span class="m-focus" id="Q_shop_focus_31701" data-shopid="31701">
+								<a href="javascript:;" class="u-focus">
+									<i class="btnico"></i><em class="btntxt">加关注</em>
+								</a>
+							</span>
+					<a href="//mall.jd.com/index-31701.html" target="_blank" class="shop-enter">进入店铺</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="Q_container" class="container">
+		<div id="Q_selector" class="selector">
+			<div class="Q_selectorLine s-brand">
+				<div class="sl-wrap">
+					<div class="sl-key"><strong>品牌：</strong></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li id="brand-21058" data-initial="z" style="display:block;">
+									<a href="" rel="nofollow" title="周生生（CHOW SANG SANG）">
+										<i></i>周生生（CHOW SANG SANG） </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Q_selectorLine s-category">
+				<div class="sl-wrap">
+					<div class="sl-key"><strong>黄金：</strong></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li><a title="黄金吊坠" data-v="" href=""><i></i>黄金吊坠</a></li>
+								<li><a title="黄金手镯/手链/脚链" data-v="" href=""><i></i>黄金手镯/手链/脚链</a></li>
+								<li><a title="黄金项链" data-v="" href=""><i></i>黄金项链</a></li>
+								<li><a title="黄金耳饰" data-v="" href=""><i></i>黄金耳饰</a></li>
+								<li><a title="黄金戒指" data-v="" href=""><i></i>黄金戒指</a></li>
+								<li><a title="黄金转运珠" data-v="" href=""><i></i>黄金转运珠</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Q_selectorLine s-category">
+				<div class="sl-wrap">
+					<div class="sl-key"><strong>铂金：</strong></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li><a title="铂金项链/吊坠" data-v="" href=""><i></i>铂金项链/吊坠</a></li>
+								<li><a title="铂金戒指" data-v="" href=""><i></i>铂金戒指</a></li>
+								<li><a title="铂金耳饰" data-v="" href=""><i></i>铂金耳饰</a></li>
+								<li><a title="铂金手镯/手链/脚链" data-v="" href=""><i></i>铂金手镯/手链/脚链</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Q_selectorLine s-category">
+				<div class="sl-wrap">
+					<div class="sl-key"><strong>钻石：</strong></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li><a title="钻戒" data-v="" href=""><i></i>钻戒</a></li>
+								<li><a title="钻石项链/吊坠" data-v="" href=""><i></i>钻石项链/吊坠</a></li>
+								<li><a title="钻石手镯/手链" data-v="" href=""><i></i>钻石手镯/手链</a></li>
+								<li><a title="裸钻" data-v="" href=""><i></i>裸钻</a></li>
+								<li><a title="钻石耳饰" data-v="" href=""><i></i>钻石耳饰</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Q_selectorLine s-category">
+				<div class="sl-wrap">
+					<div class="sl-key"><strong>翡翠玉石：</strong></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li><a title="项链/吊坠" data-v="" href=""><i></i>项链/吊坠</a></li>
+								<li><a title="手镯/手串" data-v="" href=""><i></i>手镯/手串</a></li>
+								<li><a title="戒指" data-v="" href=""><i></i>戒指</a></li>
+								<li><a title="挂件/摆件/把件" data-v="" href=""><i></i>挂件/摆件/把件</a></li>
+								<li><a title="耳饰" data-v="" href=""><i></i>耳饰</a></li>
+								<li><a title="玉石孤品" data-v="" href=""><i></i>玉石孤品</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Q_selectorLine s-category">
+				<div class="sl-wrap">
+					<div class="sl-key"><strong>珍珠：</strong></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li><a title="珍珠项链" data-v="" href=""><i></i>珍珠项链</a></li>
+								<li><a title="珍珠耳饰" data-v="" href=""><i></i>珍珠耳饰</a></li>
+								<li><a title="珍珠吊坠" data-v="" href=""><i></i>珍珠吊坠</a></li>
+								<li><a title="珍珠手链" data-v="" href=""><i></i>珍珠手链</a></li>
+								<li><a title="珍珠戒指" data-v="" href=""><i></i>珍珠戒指</a></li>
+								<li><a title="珍珠胸针" data-v="" href=""><i></i>珍珠胸针</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Q_selectorLine s-line">
+				<div class="sl-wrap">
+					<div class="sl-key"><span>适用人群：</span></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li><a href="" rel="nofollow"><i></i>男士</a></li>
+								<li><a href="" rel="nofollow"><i></i>女士</a></li>
+								<li><a href="" rel="nofollow"><i></i>女</a></li>
+								<li><a href="" rel="nofollow"><i></i>男</a></li>
+								<li><a href="" rel="nofollow"><i></i>情侣</a></li>
+								<li><a href="" rel="nofollow"><i></i>女性</a></li>
+								<li><a href="" rel="nofollow"><i></i>宝宝</a></li>
+								<li><a href="" rel="nofollow"><i></i>男性</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Q_selectorLine s-line">
+				<div class="sl-wrap">
+					<div class="sl-key"><span>用途：</span></div>
+					<div class="sl-value">
+						<div class="sl-v-list">
+							<ul class="Q_valueList">
+								<li>
+									<a href="" rel="nofollow"><i></i>自用</a>
+								</li>
+								<li>
+									<a href="" rel="nofollow"><i></i>婚庆</a>
+								</li>
+								<li>
+									<a href="" rel="nofollow"><i></i>生日礼物</a>
+								</li>
+								<li>
+									<a href="" rel="nofollow"><i></i>馈赠</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="Q_selectorSenior" class="Q_selectorLine s-line s-senior">
+				<div class="sl-wrap">
+					<div class="sl-key"><span>高级选项：</span></div>
+					<div class="sl-value">
+						<div class="sl-v-tab">
+							<div class="sl-tab-trigger clearfix">
+								<a class="trig-item" href="javascript:;"><span class="text">分类</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">价格</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">是否镶嵌</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">克重</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">材质</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">图形图案</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">款式</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">规格</span><i class="arrow"></i></a>
+								<a class="trig-item" href="javascript:;"><span class="text">其他分类</span><i class="arrow"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="sl-tab-cont">
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>手链</a></li>
+									<li><a href="" rel="nofollow"><i></i>手镯</a></li>
+									<li><a href="" rel="nofollow"><i></i>耳钉</a></li>
+									<li><a href="" rel="nofollow"><i></i>耳环</a></li>
+									<li><a href="" rel="nofollow"><i></i>耳坠</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>0-19</a></li>
+									<li><a href="" rel="nofollow"><i></i>20-1199</a></li>
+									<li><a href="" rel="nofollow"><i></i>1200-1699</a></li>
+									<li><a href="" rel="nofollow"><i></i>1700-2399</a></li>
+									<li><a href="" rel="nofollow"><i></i>2400-3799</a></li>
+									<li><a href="" rel="nofollow"><i></i>3800-8499</a></li>
+									<li><a href="" rel="nofollow"><i></i>8500以上</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>否</a></li>
+									<li><a href="" rel="nofollow"><i></i>是</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>0-2克</a></li>
+									<li><a href="" rel="nofollow"><i></i>2克以内</a></li>
+									<li><a href="" rel="nofollow"><i></i>2.1-5g</a></li>
+									<li><a href="" rel="nofollow"><i></i>2.1-3克</a></li>
+									<li><a href="" rel="nofollow"><i></i>2g以内</a></li>
+									<li><a href="" rel="nofollow"><i></i>2.1-5克</a></li>
+									<li><a href="" rel="nofollow"><i></i>3.1-5克</a></li>
+									<li><a href="" rel="nofollow"><i></i>5.1-10克</a></li>
+									<li><a href="" rel="nofollow"><i></i>5.1-10g</a></li>
+									<li><a href="" rel="nofollow"><i></i>10.1-15克</a></li>
+									<li><a href="" rel="nofollow"><i></i>10.1-20g</a></li>
+									<li><a href="" rel="nofollow"><i></i>10.1-20克</a></li>
+									<li><a href="" rel="nofollow"><i></i>20.1-30g</a></li>
+									<li><a href="" rel="nofollow"><i></i>30.1-50g</a></li>
+									<li><a href="" rel="nofollow"><i></i>50.1-100g</a></li>
+									<li><a href="" rel="nofollow"><i></i>50克以上</a></li>
+									<li><a href="" rel="nofollow"><i></i>100g以上</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>pt950</a></li>
+									<li><a href="" rel="nofollow"><i></i>pt900</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>生肖</a></li>
+									<li><a href="" rel="nofollow"><i></i>婚庆</a></li>
+									<li><a href="" rel="nofollow"><i></i>人物</a></li>
+									<li><a href="" rel="nofollow"><i></i>卡通</a></li>
+									<li><a href="" rel="nofollow"><i></i>字母</a></li>
+									<li><a href="" rel="nofollow"><i></i>转运珠</a></li>
+									<li><a href="" rel="nofollow"><i></i>其它</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>水波纹</a></li>
+									<li><a href="" rel="nofollow"><i></i>满天星</a></li>
+									<li><a href="" rel="nofollow"><i></i>O字链</a></li>
+									<li><a href="" rel="nofollow"><i></i>其它</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow"><i></i>50mm以下</a></li>
+									<li><a href="" rel="nofollow"><i></i>59-60mm</a></li>
+									<li><a href="" rel="nofollow"><i></i>60mm以上</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sl-tab-cont-item" style="display: none;">
+							<div class="sl-v-list">
+								<ul class="Q_valueList clearfix">
+									<li><a href="" rel="nofollow" data-v=""><i></i>钻石</a></li>
+									<li><a href="" rel="nofollow" data-v=""><i></i>K金饰品</a></li>
+									<li><a href="" rel="nofollow" data-v=""><i></i>投资金</a></li>
+									<li><a href="" rel="nofollow" data-v=""><i></i>彩宝</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="Q_main" class="g-main2">
+			<div class="m-list">
+				<div class="ml-wrap">
+					<div id="Q_filter" class="filter">
+						<div class="f-line top">
+							<div class="f-sort">
+								<a class="curr" href="javascript:;">综合排序<i></i></a>
+								<a class="" href="javascript:;">销量<i></i></a>
+								<a class="" href="javascript:;">价格<i></i></a>
+								<a class="" href="javascript:;">评论数<i></i></a>
+								<a class="" href="javascript:;">新品<i></i></a>
+							</div>
+							<div class="f-search">
+								<input type="text" placeholder="在结果中搜索" class="input-txt">
+								<a class="btn btn-default" data-url="" href="javascript:;">确定</a>
+							</div>
+							<div id="Q_topPage" class="f-pager">
+										<span class="fp-text">
+											<b>1</b><em>/</em><i>59</i>
+										</span>
+								<a class="fp-prev disabled" href="javascript:;">&lt;</a>
+								<a class="fp-next" href="javascript:;">&gt;</a>
+							</div>
+							<div class="f-result-sum">共<span id="Q_resCount" class="num">1753</span>件商品</div>
+						</div>
+					</div>
+					<div id="Q_goodsList" class="goods-list-v2 gl-type-3 J-goods-list">
+						<ul class="gl-warp clearfix">
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+							<li class="gl-item">
+								<div class="gl-i-wrap">
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="220" height="220" class="err-product" data-img="1" src="//img14.360buyimg.com/n7/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" />
+										</a>
+										<div></div>
+									</div>
+									<div class="p-scroll">
+										<span class="ps-prev">&lt;</span>
+										<span class="ps-next">&gt;</span>
+										<div class="ps-wrap">
+											<ul class="ps-main">
+												<li class="ps-item">
+													<a href="javascript:;" class="curr" title=""><img data-lazy-img="//img14.360buyimg.com/n9/jfs/t934/226/183270692/295414/f487f845/5506a2fdN8878b14b.jpg" class="err-product" width="25" height="25" /></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="p-price">
+										<strong data-price="980.00"><em>¥</em><i>980.00</i></strong> </div>
+									<div class="p-name p-name-type-2">
+										<a target="_blank" title="周生生 黄金足金Charme串珠系列皇冠转运珠 83631p 定价" href="//item.jd.com/1048610059.html" onclick="searchlog(1,1048610059,0,1,'','flagsClk=4194952')">
+											<em><font class="skcolor_ljg">周生生</font> 黄金足金Charme串珠系列皇冠转运珠 83631p 定价</em>
+											<i class="promo-words" id="Q_AD_1048610059"></i>
+										</a>
+									</div>
+									<div class="p-commit">
+										<strong>已有<a id="" target="_blank" href="">2700+</a>人评价</strong>
+									</div>
+									<div class="p-focus">
+										<a href="javascript:;" title="点击关注"><i></i>关注</a>
+									</div>
+									<div class="p-shop"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="Q_scroll_loading" class="notice-loading-more"><span>正在加载中，请稍后~~</span></div>
+					<div class="page clearfix">
+						<div id="Q_bottomPage" class="p-wrap">
+							<span class="p-num"><a class="pn-prev disabled"><i>&lt;</i><em>上一页</em></a><a href="#" class="curr">1</a><a onclick="SEARCH.page(3, true)" href="#">2</a><a onclick="SEARCH.page(5, true)" href="#">3</a><a onclick="SEARCH.page(7, true)" href="#">4</a><a onclick="SEARCH.page(9, true)" href="#">5</a><a onclick="SEARCH.page(11, true)" href="#">6</a><a onclick="SEARCH.page(13, true)" href="#">7</a><b class="pn-break">...</b><a class="pn-next" onclick="SEARCH.page(3, true)" href="#" title="使用方向键右键也可翻到下一页哦！"><em>下一页</em><i>&gt;</i></a></span><span class="p-skip"><em>共<b>28</b>页&nbsp;&nbsp;到第</em><input class="input-txt" type="text" value="1" onkeydown="javascript:if(event.keyCode==13){SEARCH.page_jump(28,1);return false;}"><em>页</em><a class="btn btn-default" onclick="SEARCH.page_jump(28,1)" href="#">确定</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="m-aside">
+				<div class="aside-bar">
+					<div id="" class="ab-goods u-ad-wrap" style="display:block;">
+						<div class="mt">
+							<h3>商品精选</h3></div>
+						<div class="mc">
+							<ul class="clearfix">
+								<li>
+									<div class="p-img">
+										<a target="_blank" href="">
+											<img width="160" height="160" data-img="1" src="//img13.360buyimg.com/n2/jfs/t2833/196/4263282052/58336/43271675/57b3d09eN33a9f7f0.jpg" class="err-product">
+											<img src="" style="display:none;">
+										</a>
+									</div>
+									<div class="p-price">
+										<strong class="Q_1603520988" data-adv="1"><em>¥</em><i>1024.00</i></strong>
+									</div>
+									<div class="p-name">
+										<a target="_blank" href="https://ccc-x.jd.com/dsp/nc?ext=Y2xpY2sueC5qZC5jb20vSmRDbGljay8_eHVpZD01MjAwNyZ4c2l0ZWlkPTEwMDYzMTY1XzI5MSZ0bz1odHRwOi8vaXRlbS5qZC5jb20vMTYwMzUyMDk4OC5odG1s&log=72LtN35bRRaQQkqXYTTTPkGf6dswc0XF2UFUznC5vguB9U1uKSl-uikrR4xd66psE-FtgXWDVF0zsUcKSkoZGMQkI0gdo36ekjOgvVV0ShPGABuYL_jZ1ylgvpdwTzZvzo_xu4hZdQIcQ6meusrbTOloYeavbWD-WBcIFsdIWWLi1V1N53Ec6LFXO-c5-KwQNCfjfil6qMQ_6V2NZf5-CWKy1NKV6kK95nZPLpgpaiWtLoyRHWz57Q_Jhs8QXT6ak9aevz61qtELcVNzpohuBqTE3p4UdT4h8aHP4BaKVAM7sQ8uSnPjkUWu38B0gR12OWCm6IFLZv6ARw0MDsw9E7OQEsvijyQz5SqTa32c6A90B9-8wTiuveCFPI1GEu2A&v=404">
+											<em>周大福 满天星 【白金/PT950铂金】项链 PT17766 45cm 1280元</em>
+										</a>
+									</div>
+									<div class="p-comm" style="padding:8px 10px 0">已有<span style="color:#005aa0">1972</span>人评价</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="Q_recommendGoods" class="ab-goods">
+						<div class="mt">
+							<h3>精品推荐</h3></div>
+						<div class="mc"></div>
+					</div>
+					<div class="promo-pic-adbox u-ad-wrap" style="display:none;"><span class="u-ad"></span>
+						<h5 class="hd">商家精选</h5>
+						<div class="bd">
+							<div id="Q_promWrap_576">
+								<div class="mc"></div>
+							</div>
+						</div>
+					</div>
+					<div id="miaozhen8148" class="ab-pic"></div>
+				</div>
+			</div>
+			<span class="clr"></span>
+		</div>
+
+	</div>
+</div>
+<div class="w">
+	<div class="m-box-s1 rec-goods-chosen u-ad-wrap">
+		<span class="u-ad"></span>
+		<div class="mt"><strong class="mt-title">商品精选</strong></div>
+		<div class="mc">
+			<ul data-type="48" class="goods-chosen-list clearfix">
+				<li>
+					<div class="p-img">
+						<a target="_blank" href="">
+							<img width="190" height="190" src="//img13.360buyimg.com/n1/s190x190_jfs/t2833/196/4263282052/58336/43271675/57b3d09eN33a9f7f0.jpg" class="err-product">
+						</a>
+					</div>
+					<div class="p-name">
+						<a target="_blank" href="">周大福 满天星 【白金/PT950铂金】项链 PT17766 45cm 1280元 </a>
+					</div>
+					<div class="p-price">
+						<strong class="price">￥<span class="J-prom-p-1603520988">1280.00</span></strong>
+					</div>
+					<div class="p-review">
+						<span class="number">2002</span>人评价
+					</div>
+				</li>
+				<li>
+					<div class="p-img">
+						<a target="_blank" href="">
+							<img width="190" height="190" src="//img13.360buyimg.com/n1/s190x190_jfs/t2833/196/4263282052/58336/43271675/57b3d09eN33a9f7f0.jpg" class="err-product">
+						</a>
+					</div>
+					<div class="p-name">
+						<a target="_blank" href="">周大福 满天星 【白金/PT950铂金】项链 PT17766 45cm 1280元 </a>
+					</div>
+					<div class="p-price">
+						<strong class="price">￥<span class="J-prom-p-1603520988">1280.00</span></strong>
+					</div>
+					<div class="p-review">
+						<span class="number">2002</span>人评价
+					</div>
+				</li>
+				<li>
+					<div class="p-img">
+						<a target="_blank" href="">
+							<img width="190" height="190" src="//img13.360buyimg.com/n1/s190x190_jfs/t2833/196/4263282052/58336/43271675/57b3d09eN33a9f7f0.jpg" class="err-product">
+						</a>
+					</div>
+					<div class="p-name">
+						<a target="_blank" href="">周大福 满天星 【白金/PT950铂金】项链 PT17766 45cm 1280元 </a>
+					</div>
+					<div class="p-price">
+						<strong class="price">￥<span class="J-prom-p-1603520988">1280.00</span></strong>
+					</div>
+					<div class="p-review">
+						<span class="number">2002</span>人评价
+					</div>
+				</li>
+				<li>
+					<div class="p-img">
+						<a target="_blank" href="">
+							<img width="190" height="190" src="//img13.360buyimg.com/n1/s190x190_jfs/t2833/196/4263282052/58336/43271675/57b3d09eN33a9f7f0.jpg" class="err-product">
+						</a>
+					</div>
+					<div class="p-name">
+						<a target="_blank" href="">周大福 满天星 【白金/PT950铂金】项链 PT17766 45cm 1280元 </a>
+					</div>
+					<div class="p-price">
+						<strong class="price">￥<span class="J-prom-p-1603520988">1280.00</span></strong>
+					</div>
+					<div class="p-review">
+						<span class="number">2002</span>人评价
+					</div>
+				</li>
+				<li>
+					<div class="p-img">
+						<a target="_blank" href="">
+							<img width="190" height="190" src="//img13.360buyimg.com/n1/s190x190_jfs/t2833/196/4263282052/58336/43271675/57b3d09eN33a9f7f0.jpg" class="err-product">
+						</a>
+					</div>
+					<div class="p-name">
+						<a target="_blank" href="">周大福 满天星 【白金/PT950铂金】项链 PT17766 45cm 1280元 </a>
+					</div>
+					<div class="p-price">
+						<strong class="price">￥<span class="J-prom-p-1603520988">1280.00</span></strong>
+					</div>
+					<div class="p-review">
+						<span class="number">2002</span>人评价
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="w">
+	<div class="bottom-search">
+		<div class="form-group">
+			<div class="fg-line search-ext">
+				<div class="fg-line-key"><span>您是不是要找：</span></div>
+				<div class="fg-line-value">
+					<a href="" class="fore">周大福</a><b>|</b>
+					<a href="">周大生</a><b>|</b>
+					<a href="">六福珠宝</a><b>|</b>
+					<a href="">周六福</a><b>|</b>
+					<a href="">潮宏基</a><b>|</b>
+					<a href="">周生生 戒指</a><b>|</b>
+					<a href="">周生生项链</a><b>|</b>
+					<a href="">周生生 手链</a><b>|</b>
+					<a href="">谢瑞麟</a><b>|</b>
+					<a href="">六福</a>
+				</div>
+			</div>
+			<div class="fg-line re-search">
+				<div class="fg-line-key"><b>重新搜索：</b></div>
+				<div class="fg-line-value">
+					<input id="key-re-search" class="input-txt input-XL" type="text" placeholder="搜索" value="周生生" onkeydown="javascript:if(event.keyCode==13){searchlog(1,0,0,60);search('key-re-search');}">
+					<a class="btn btn-primary btn-XL" href="javascript:search('key-re-search')" onclick="searchlog(1,0,0,60)">搜索</a>
+					<a class="link" href="javascript:surveyShow()">说说我使用搜索的感受</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="w">
+	<div id="footmark" class="footmark">
+		<div class="m hide may-like" style="display: block;">
+			<div class="mt clearfix">
+				<h2 class="title">猜你喜欢</h2>
+				<div class="extra">
+					<a href="#none" class="change"><i class="ico"></i><span class="txt">换一批</span></a>
+				</div>
+			</div>
+			<div class="mc">
+				<ul class="may-like-list clearfix">
+					<li>
+						<div class="p-img">
+							<a href="" title="李宇春：1987 我不知会遇见你（计入京东销量排行榜）（CD）" target="_blank">
+								<img src="" alt="李宇春：1987 我不知会遇见你（计入京东销量排行榜）（CD）" width="130" height="130">
+							</a>
+						</div>
+						<div class="p-name">
+							<a href="" target="_blank" title="李宇春：1987 我不知会遇见你（计入京东销量排行榜）（CD）">李宇春：1987 我不知会遇见你（计入京东销量排行榜）（CD）</a>
+						</div>
+						<div class="p-review">
+							<a class="p-comm-20084267" href="" target="_blank">(已有2900+人评价)</a>
+						</div>
+						<div class="p-price J-p-20084267">￥44.00</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<script src="../js/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+
+		$('.trig-item').mouseover(function(){
+
+			var _this = $(this),
+					_thisIndex = _this.index(),
+					item = _this.parents('.sl-value').siblings('.sl-tab-cont').find('.sl-tab-cont-item');
+
+			_this.addClass('trig-curr');
+			item.hide().eq(_thisIndex).show();
+
+			$('.trig-item').mouseout(function(){
+				item.mouseover(function(){
+					$(".clearfix a").removeClass('trig-curr');
+					item.hide().eq(_thisIndex).show();
+					_this.addClass('trig-curr');
+				})
+				item.mouseout(function(){
+					_this.removeClass('trig-curr');
+					item.hide();
+				})
+				_this.removeClass('trig-curr');
+				item.hide();
+			});
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		function toggleCurrClass(obj,index,item){
+			obj.addClass("trig-curr").siblings().removeClass("trig-curr");
+			item.hide().eq(index).show();
+		}
+
+
+		$('#Q_filter').find('.f-sort a').on('click', function(){
+			var _this = $(this);
+			_this.addClass('curr').siblings().removeClass('curr');
+
+			// 销量降序
+			if(_this.html().indexOf("销量") != -1) {
+				_this.addClass('down');
+			} else {
+				_this.siblings().removeClass('down');
+			}
+
+			// 价格降序
+			if(_this.html().indexOf("价格") != -1) {
+				_this.addClass('down');
+			} else {
+				_this.siblings().removeClass('down');
+			}
+		});
+	});
+</script>
+</body>
+</html>

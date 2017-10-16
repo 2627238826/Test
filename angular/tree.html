@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>树</title>
+    <script src="../js/angular.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        color: #222;
+        padding: 2em;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    hr {
+        border: none;
+        border-bottom: 1px solid #222;
+        margin: 2em -2em;
+    }
+
+    .checkbox {
+        display: inline-block;
+        width: 0.8em;
+        height: 0.8em;
+        border: 1px solid #aaa;
+        border-radius: 2px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+    .checkbox.selected {
+        background-color: #4a4;
+    }
+    .checkbox.partial {
+        background-color: #da4;
+    }
+
+</style>
+<body ng-app="treeViewerApp" ng-controller="mainCtrl">
+<tree-viewer ng-model="selected" items="items"></tree-viewer>
+
+<hr>
+{{ selected }}
+</body>
+<script>
+    // MODULE
+    angular.module("treeViewerApp", [])
+
+    // MAIN CONTROLLER
+            .controller("mainCtrl", function mainCtrl($scope) {
+                $scope.items = [{
+                    name: 'features',
+                    children: [{
+                        name: 'crm',
+                        children: [{
+                            name: 'customers list',
+                            children: []
+                        }]
+                    }, {
+                        name: 'analytics',
+                        children: [{
+                            name: 'trends',
+                            children: []
+                        }, {
+                            name: 'funnels',
+                            children: []
+                        }, {
+                            name: 'event analyses',
+                            children: []
+                        }, {
+                            name: 'reports',
+                            children: []
+                        }, {
+                            name: 'segmentations',
+                            children: []
+                        }, {
+                            name: 'retentions',
+                            children: []
+                        }, {
+                            name: 'sessions',
+                            children: []
+                        }]
+                    }, {
+                        name: 'campaigns',
+                        children: [{
+                            name: 'scenarios',
+                            children: []
+                        }, {
+                            name: 'email_designs',
+                            children: []
+                        }, {
+                            name: 'surveys',
+                            children: []
+                        }, {
+                            name: 'suggestions',
+                            children: []
+                        }]
+                    }, {
+                        name: 'optimizations',
+                        children: [{
+                            name: 'predictions',
+                            children: []
+                        }]
+                    }, {
+                        name: 'administration',
+                        children: []
+                    }, {
+                        name: 'market',
+                        children: [{
+                            name: 'public',
+                            children: []
+                        }, {
+                            name: 'private',
+                            children: []
+                        }]
+                    }]
+                },
+                    {
+                        name: 'roles',
+                        children: [{
+                            name: 'admin',
+                            children: []
+                        }, {
+                            name: 'publisher',
+                            children: []
+                        }, {
+                            name: 'reviewer',
+                            children: []
+                        }]
+                    }];
+                $scope.selected = [];
+            })
+
+            // SELECT NAMES
+            .value("selectNames", function(scope, index) {
+                var newScope = scope;
+                var names = [];
+
+                // add item name
+                names[0] = scope.items[index].name;
+
+                // insert parent names
+                while (newScope.parent) {
+                    // add parent name
+                    names.unshift(newScope.parent.items[newScope.parentIndex].name);
+
+                    // move up
+                    newScope = newScope.parent;
+                }
+
+                // return result
+                return names;
+            })
+
+            // SELECT RECURSIVE
+            .factory("selectRecursive", function(selectNames) {
+                var selectRecursive = function(childrenScope, value) {
+                    for (var i = 0; i < childrenScope.selected.length; ++i) {
+                        // select this
+                        childrenScope.selected[i] = value;
+
+                        // add / remove from selected
+                        if (value == 1)
+                            childrenScope.ngModel.push(selectNames(childrenScope, i));
+                        else {
+                            var ch;
+                            while ((ch = childrenScope.ngModel.indexOf(selectNames(childrenScope, i))) !== -1)
+                                childrenScope.ngModel.splice(ch, 1);
+                        }
+
+                        // select children
+                        selectRecursive(childrenScope.childrenScopes[i], value);
+                    }
+                };
+
+                return selectRecursive;
+            })
+
+            // TREE VIEWER
+            .directive("treeViewer", function treeViewer($compile) {
+                return {
+                    restrict: "E",
+                    scope: {
+                        items: "=",
+                        ngModel: "=",
+                        parent: "=",
+                        parentIndex: "="
+                    },
+
+                    template:
+                            "<ul> \
+                             <li ng-repeat='item in items'> \
+                               <p> \
+                                 <a href ng-show='item.children && item.children.length > 0' ng-click='toggle($index)'> \
+                                   <i class='ion-arrow-down-b' ng-show='open[$index]'></i> \
+                                                   <i class='ion-arrow-right-b' ng-hide='open[$index]'></i> \
+                                 </a> \
+                                 <span class='checkbox' \
+                                       ng-class='{ selected: selected[$index] == 1, partial: selected[$index] == 2 }' \
+                                       ng-click='select($index)' > \
+                                 </span> \
+                                 {{ item.name }} \
+                               </p> \
+                               <tree-viewer ng-show='open[$index]' \
+                                            ng-model='ngModel' \
+                                            items='item.children' \
+                                            parent='this' \
+                                            parent-index='$index'> \
+                               </tree-viewer> \
+                             </li> \
+                           </ul>",
+
+                    controller: function treeViewerCtrl($scope, selectNames, selectRecursive) {
+                        // set up arrays
+                        $scope.open = [];
+                        $scope.selected = [];
+                        $scope.items.forEach(function(item, i) {
+                            $scope.open[i] = true;
+                            $scope.selected[i] = 0;
+                        });
+
+                        // children scopes
+                        $scope.childrenScopes = [];
+
+                        // add to the parent
+                        if ($scope.parent) {
+                            $scope.parent.childrenScopes[$scope.parentIndex] = $scope;
+                        }
+
+                        // toggle function
+                        $scope.toggle = function(index) {
+                            $scope.open[index] = !$scope.open[index];
+                        };
+
+                        // select function
+                        $scope.select = function(index) {
+                            if ($scope.selected[index] == 2 || $scope.selected[index] == 0) {
+                                // select item
+                                $scope.selected[index] = 1;
+
+                                // add to selected
+                                $scope.ngModel.push(selectNames($scope, index));
+
+                                // select all children
+                                selectRecursive($scope.childrenScopes[index], 1);
+                            }
+                            else {
+                                // deselect item
+                                $scope.selected[index] = 0;
+
+                                // remove from selected
+                                $scope.ngModel.splice($scope.ngModel.indexOf(selectNames($scope, index)), 1);
+
+                                // deselect children
+                                selectRecursive($scope.childrenScopes[index], 0);
+                            }
+
+                            // notify parent
+                            if ($scope.parent)
+                                $scope.parent.notify($scope.parentIndex);
+                        };
+
+                        // notify function
+                        // - notifies the item that is should check it's children
+                        $scope.notify = function(parentIndex) {
+                            // number of selected children
+                            var selectedChildren = 0;
+
+                            // check them
+                            $scope.childrenScopes[parentIndex].selected.forEach(function(selected) {
+                                if (selected == 1)
+                                    ++selectedChildren;
+                            });
+
+                            // select appropriatly
+                            if (selectedChildren == 0)
+                                $scope.selected[parentIndex] = 0;
+                            else if (selectedChildren == $scope.items[parentIndex].children.length)
+                                $scope.selected[parentIndex] = 1;
+                            else
+                                $scope.selected[parentIndex] = 2;
+                        };
+                    },
+
+                    compile: function(element) {
+                        // http://stackoverflow.com/questions/14430655/recursion-in-angular-directives
+
+                        var contents = element.contents().remove();
+                        var compiledContents;
+
+                        return {
+                            post: function(scope, element) {
+                                if (!compiledContents)
+                                    compiledContents = $compile(contents);
+
+                                compiledContents(scope, function(clone){
+                                    element.append(clone);
+                                });
+                            }
+                        };
+                    }
+                };
+            });
+</script>
+</html>

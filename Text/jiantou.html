@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    var color = "green";
+    var obj = {
+        color: "blue",
+        getColor: () => {
+            return this.color;//this指向window
+        }
+    };
+    var sayColor = () => {
+        return this.color;//this指向window
+    };
+    console.log(obj.getColor());//green
+    console.log(sayColor());//green
+
+
+    var x =123;
+    var o = {
+        x : 1,
+        func1 : ()=> {console.log(this.x) },
+        func2 : function() {console.log(this.x)},
+        test : function() {
+            setTimeout(()=> {
+                console.log(this.x);
+            },10);
+        }
+    };
+    console.log(o.func1());
+    console.log(o.func2());
+    console.log(o.test());
+
+
+
+</script>
+</html>

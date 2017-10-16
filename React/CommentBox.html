@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CommentBox</title>
+</head>
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<body>
+<input type="text" id="a" oninput="myFunction(event)" onporpertychange="myFunction(event)">
+<div id="content"></div>
+<script>
+
+    document.getElementById("a").addEventListener("onporpertychange",function(e){
+        console.log("inputting!!");
+    })
+
+    function myFunction(e){
+        alert("inputting!!");
+    }
+
+</script>
+</body>
+
+
+</html>

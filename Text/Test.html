@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <title>点击回滚到顶部</title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<style>
+   .red{
+       width: 100px;
+       height: 100px;
+       border: 2px solid red;
+   }
+   .green{
+       width: 100px;
+       height: 100px;
+       border: 2px solid green;
+   }
+   .blue{
+       width: 100px;
+       height: 100px;
+       border: 2px solid blue;
+   }
+   .yellow{
+       width: 100px;
+       height: 100px;
+       border: 2px solid yellow;
+   }
+   .black{
+       width: 100px;
+       height: 100px;
+       border: 2px solid black;
+   }
+</style>
+<body>
+<div class="div0"></div>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+<div class="div4"></div>
+<div class="div5"></div>
+
+<button onclick="re()">点击随机切换</button>
+<script>
+   function randomFun(arr){
+       var length =arr.length;
+       var arr1 =new Array();
+       for(var i=0;i<length;i++)
+       {
+           arr1[i] =i;
+       }   //建立数组下标数组
+       var arr2 =new Array();
+       for(var i=0;i<length;i++)
+       {
+           arr2[i] =arr1.splice(Math.floor(Math.random()*arr1.length),1);
+       }  //将数组下标随机打乱
+       var arr3 =new Array();
+       for(var i =0;i<length;i++)
+       {
+           arr3[i]=arr[arr2[i]];
+       }  //将数组按打乱后的下标输出
+       return arr3;
+   }
+
+   //测试代码
+   var arrColor=["red","green","blue","yellow","black"];
+   (function(arr){
+       var ar = randomFun(arr);
+       //alert(ar.join(","));
+       $('.div0').addClass(ar[0]);
+       $('.div1').addClass(ar[1]);
+       $('.div2').addClass(ar[2]);
+       $('.div3').addClass(ar[3]);
+       $('.div4').addClass(ar[4]);
+       $('.div5').addClass(ar[5]);
+   })(arrColor);
+
+    function re() {
+        history.go(0)
+
+    }
+
+
+</script>
+</body>
+</html>

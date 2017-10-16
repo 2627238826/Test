@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/Mock" libraries="{Text/Mock/node_modules}" />
+    <file url="file://$PROJECT_DIR$/Vue/my-project" libraries="{Text/Vue/my-project/node_modules}" />
+    <file url="file://$PROJECT_DIR$/angular2/angular2-quickstart1" libraries="{Text/angular2/angular2-quickstart1/node_modules}" />
+    <file url="file://$PROJECT_DIR$/angular2/angular2-quickstart2" libraries="{Text/angular2/angular2-quickstart2/node_modules}" />
+    <includedPredefinedLibrary name="ECMAScript 6" />
+  </component>
+</project>

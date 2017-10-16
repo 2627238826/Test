@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<body>
+
+<div class="p_li text-left col-md-10" style="padding: 0px;">
+    <table border="0px" cellspacing="" cellpadding="">
+        <tr>
+            <td>
+                <div class="checkbox">
+                    <label class="color_ff">
+                        <input type="checkbox" class="chk" name="items" value="红利账户"><span></span> 红利账户
+                    </label>
+                </div>
+            </td>
+            <td>
+                <div class="checkbox">
+                    <label class="color_green">
+                        <input type="checkbox" class="chk" name="items" value="积分账户"> <span></span> 积分账户
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="checkbox">
+                    <label class="color_yello">
+                        <input type="checkbox" class="chk" name="items" value="商金币账户"><span></span> 商金币账户
+                    </label>
+                </div>
+            </td>
+            <td>
+                <div class="checkbox">
+                    <label class="color_blue">
+                        <input type="checkbox" class="chk" name="items" value="积分宝账户"><span></span> 积分宝账户
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="checkbox">
+                    <label class="color_zi">
+                        <input type="checkbox" class="chk" value="邮费账户"><span></span> 邮费账户
+                    </label>
+                </div>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+<div>
+    <div class="col-md-8 clearfix o_li">
+
+
+        <div class="list_or color_yello"><span>商金币账户</span></div>
+        <div class="list_or color_blue"><span>积分宝账户</span></div>
+
+    </div>
+
+    <div class="col-md-2 pull-right text-right" style="padding-right: 0px;">
+        <a href="javascript:" class="edit_a">编辑</a>
+    </div>
+
+</div>
+
+<div>
+    <div class="col-md-8 clearfix o_li">
+        <div class="list_or color_ff"><span>红利账户</span></div>
+
+        <div class="list_or color_yello"><span>商金币账户</span></div>
+
+
+    </div>
+
+    <div class="col-md-2 pull-right text-right" style="padding-right: 0px;">
+        <a href="javascript:" class="edit_a">编辑</a>
+    </div>
+
+</div>
+
+
+</body>
+<script>
+    var A =[];  //相当于编辑的值
+    var B =['红利账户','积分账户','商金币账户','积分宝账户','邮费账户'];//相当于黄色区域的值
+    $('.edit_a').click(function () {
+        //拿到编辑值
+        for(var i =0; i <$('.o_li').find('.list_or').length; i++){
+            A.push($('.o_li').find('.list_or')[i].innerText)
+        }
+
+        //选中checkbox
+        for(var i =0; i <A.length; i++){
+            if(B.indexOf(A[i])>-1){ //筛选出A在B里面的值有哪些（也可以用$.inArray(value, array)）
+                //alert(A[i]);
+                //然后根据筛选出的值，去选中复选框
+                $("[value = "+A[i]+"]:checkbox").attr("checked", true);
+            }
+        }
+    })
+</script>
+</html>

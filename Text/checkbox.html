@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkbox</title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<input type="checkbox" onclick="ck('111',this)">
+<input type="checkbox" onclick="ck('111',this)">
+<input type="checkbox" onclick="ck('333',this)">
+<input type="checkbox" onclick="ck('444',this)">
+
+</body>
+<script>
+    var selectedList =[];
+    function ck(v,n) {
+        if(n.checked){
+            selectedList.push(v);
+            alert(selectedList);
+        }else {
+            for (var i = 0; i < selectedList.length; i++) {
+                if (selectedList[i] == v) {
+                    selectedList.splice(i, 1);
+                    alert(selectedList);
+                }
+            }
+        }
+        console.log($('input[type=checkbox]:checked'));
+    }
+
+    //判断选中
+
+    for(var i=0;i<$('input[type=checkbox]').length;i++){
+        if ($('input[type=checkbox]')[i].checked == true) {
+            console.log(i);
+        }
+    }
+    console.log($('input[type=checkbox]:checked'));
+
+</script>
+</html>

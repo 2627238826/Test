@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>react测试</title>
+    <script src="../js/react.js"></script>
+    <script src="../js/react-dom.js"></script>
+    <script src="../js/browser.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    //样式
+    var myStyle ={
+        fontSize:100,
+        color: '#FF0000'
+    }
+    var arr =[<h4>你好</h4>,<h4>世界</h4>]
+    ReactDOM.render(
+            <div>
+                <div style={myStyle}>{arr}</div>
+                {/*注释*/}
+            </div>,
+            document.getElementById('example')
+    );
+    //组件
+    var HellowMessage = React.createClass({
+        render: function () {
+            return <h1>Hello {this.props.name}</h1>
+        }
+    })
+    ReactDOM.render(
+            <HellowMessage name="世界！"/>,
+            document.getElementById('example')
+    )
+    //this.props.children
+    var NotesList = React.createClass({
+         render:function () {
+             return(
+                 <ol>
+                     {
+                        React.Children.map(this.props.items,function (child) {
+                            return <li>{child}</li>
+                        })
+                     }
+                   </ol>
+             );
+         }
+    })
+    var items =['as','sa','12']
+    ReactDOM.render(
+            <NotesList name={items}>
+                <span>hello</span>
+                <span>hello</span>
+            </NotesList>,
+            document.getElementById('example')
+    )
+    //PropTypes / getDefaultProps
+    var MyTitle = React.createClass({
+        propTypes:{
+            title: React.PropTypes.string.isRequired,
+        },
+        getDefaultProps :function () {
+            return{
+                title:'你好'
+            };
+        },
+        render :function(){
+            return <h1>{this.props.title}</h1>;
+        }
+    })
+    ReactDOM.render(
+            <MyTitle/>,
+            document.getElementById('example')
+    )
+    //获取真实的DOM节点
+    var MyComponent = React.createClass({
+        handleClick : function () {
+            console.log(this.refs.myTextInput);
+            console.log(document.getElementById('te'));
+        },
+        render:function () {
+            return(
+                <div>
+                    <input type="text" id="te" ref="myTextInput"/>
+                    <input type="button" value="Focus the text input" onClick={this.handleClick}/>
+                </div>
+            )
+        }
+    })
+    ReactDOM.render(
+            <MyComponent/>,
+            document.getElementById('example')
+    )
+    //this.state
+    var LikeButton = React.createClass({
+        getInitialState: function () { //设置初始值
+            return {liked :false}
+        },
+        handleClick:function (event) {
+            this.setState({liked :!this.state.liked}) //this.setState修改状态值
+        },
+        render :function () {
+            var text = this.state.liked ? 'like' : 'haven\'t like'; //this.state随着用户互动而发生改变的特性
+            return(
+                    <p onClick={this.handleClick}>
+                        You {text} this,Click to toggle.
+                    </p>
+            )
+        }
+    })
+    ReactDOM.render(
+            <LikeButton/>,
+            document.getElementById('example')
+    )
+    //表单
+    var Input = React.createClass({
+        getInitialState: function () {
+            return {value :'Hello !'};
+        },
+        handleChange :function (event) {
+            this.setState({value :event.target.value});
+        },
+        render :function () {
+            var value = this.state.value; //不能用this.props.value读取
+            return(
+                    <div>
+                        <input type="text" value={value} onChange={this.handleChange}/>
+                        <p>{value}</p>
+                    </div>
+            )
+        }
+    })
+    ReactDOM.render(
+            <Input/>,
+            document.getElementById('example')
+    )
+    //组件的生命周期
+    var Hello = React.createClass({
+        getInitialState :function () {
+            return{
+                opacity:1.0
+            }
+        },
+        componentDidMount: function () {
+            this.timer = setInterval(function () {
+                var opacity =this.state.opacity;
+                opacity -=0.5;
+                if(opacity<0.1){
+                    opacity=1.0;
+                }
+                this.setState({
+                    opacity: opacity
+                });
+            }.bind(this),100);
+        },
+        render:function () {
+            return(
+                    <div style={{opacity:this.state.opacity}}>
+                        Hello {this.props.name}
+                    </div>
+            )
+        }
+    })
+    ReactDOM.render(
+            <Hello name="world"/>,
+            document.getElementById('example')
+    )
+    //Ajax
+    var UserGist = React.createClass({
+        getInitialState: function() {
+            return {
+                username: '',
+                lastGistUrl: ''
+            };
+        },
+        componentDidMount: function() {
+            $.get(this.props.source, function(result) {
+                var lastGist = result[0];
+                if (this.isMounted()) {
+                    this.setState({
+                        username: lastGist.owner.login,
+                        lastGistUrl: lastGist.html_url
+                    });
+                }
+            }.bind(this));
+        },
+        render: function() {
+            return (
+                    <div>
+                        {this.state.username}'s last gist is
+                        <a href={this.state.lastGistUrl}>here</a>
+                    </div>
+            );
+        }
+    });
+    ReactDOM.render(
+            <UserGist source="https://api.github.com/users/octocat/gists" />,
+            document.getElementById('example')
+    );
+    //组合组件
+    var Teacher =React.createClass({
+        render:function () {
+            return (
+                    <div>
+                        <Student1 username={this.props.username}/>
+                        <Student2 username={this.props.username}/>
+                    </div>
+            )
+        }
+    })
+    var Student1 =React.createClass({
+        render:function () {
+            return (
+                    <div>Student1:{this.props.username}</div>
+            )
+        }
+    })
+    var Student2 =React.createClass({
+        render:function () {
+            return (
+                    <div>Student2:{this.props.username}</div>
+            )
+        }
+    })
+    ReactDOM.render(
+           <Teacher username="张三"/> ,
+            document.getElementById('example')
+    )
+    //组件之间的通信
+    var GroceryList = React.createClass({
+        handleClick: function(i) {
+            console.log('You clicked: ' + this.props.items[i]);
+        },
+
+        render: function() {
+            return (
+                    <div>
+                        {this.props.items.map(function(item, i) {
+                            return (
+                                    <div onClick={this.handleClick.bind(this, i)} key={i}>{item}</div>
+                            );
+                        }, this)}
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <GroceryList items={['Apple', 'Banana', 'Cranberry']} />,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

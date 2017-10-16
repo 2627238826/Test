@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令demo</title>
+    <script src="../js/angular.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myController" >
+
+<input type="text" ng-model="myDirective">
+<p>
+<my-directive flavor="myDirective"  greed="sayHello('小强')"></my-directive>
+{{myDirective}}
+</p>
+
+
+<!--<div my-directive></div>-->
+
+
+
+</body>
+<script type="text/javascript">
+    var myApp = angular.module('myApp', [])
+            .directive('myDirective', function($rootScope) {
+                return {
+                    restrict: 'AE',
+//                    scope:true,
+                    scope:{
+                        flavor:'=',
+                        greed:'&'
+                    },
+//                      template: 'Say:{{flavor}}'
+                    template: '<p><input type="text" ng-model="flavor"></p>' +
+                    '<button class="btn btn-default" ng-click="greed()">Greeting</button><br/>',
+                    controller:function ($scope) {
+                        $scope.myDirective="dsdsdsdsd"
+                    }
+                };
+            })
+            .controller('myController',function($scope){
+//                $scope.flavor = 'from controller';
+                $scope.myDirective = 'from controller';
+                $scope.sayHello=function(name){
+                    alert("Hello "+name);
+                }
+            });
+</script>
+</html>

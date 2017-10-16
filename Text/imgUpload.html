@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传预览</title>
+</head>
+<body>
+
+<input type="file" id="f" >
+<img src="" id="img">
+</body>
+ <script>
+
+         var fileInput  =document.getElementById("f");
+         var img  =document.getElementById("img");
+         fileInput.addEventListener("change",function () {
+             // 读取文件:
+             var reader = new FileReader();
+             reader.readAsDataURL(fileInput.files[0]);
+             reader.onload = function(e) {
+                 var data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+                 img.src=data;
+             };
+         })
+
+ </script>
+</html>

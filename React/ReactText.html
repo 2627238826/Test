@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React-Text</title>
+    <script src="../js/react.js"></script>
+    <script src="../js/react-dom.js"></script>
+    <script src="../js/browser.min.js"></script>
+</head>
+<body>
+<div id="examples"></div>
+</body>
+<script type="text/babel">
+
+    ReactDOM.render(
+            <div>你好，世界！</div>,
+            document.getElementById('examples')
+    )
+    //JSX语法
+    var arr =[<div>你好</div>,<div>世界</div>];
+    ReactDOM.render(
+            <div>{arr}</div>,
+            document.getElementById('examples')
+    )
+    //组件
+    var HellowMessage = React.createClass({
+        render: function () {
+            return <h1>你好{this.props.name}</h1>
+        }
+    })
+    ReactDOM.render(
+            <HellowMessage name='世界！'/>,
+            document.getElementById('examples')
+    )
+    //this.props.children 读取子节点
+    var NotesList = React.createClass({
+        render:function () {
+            return(
+            <ol>
+                {
+                    React.Children.map(this.props.children,function (child) {
+                        return<li>{child}</li>
+                    })
+                }
+            </ol>
+            )
+        }
+    })
+    ReactDOM.render(
+            <NotesList>
+                <span>列表1</span>
+                <span>列表2</span>
+            </NotesList>,
+            document.getElementById('examples')
+    )
+    //PropTypes 验证组件实例的属性
+    var MyTitle = React.createClass({
+        propTypes:{
+            title: React.PropTypes.string.isRequired,
+        },
+        render:function () {
+            return <h1>{this.props.title}</h1>
+        }
+    })
+    var data= '1234';
+    ReactDOM.render(
+            <MyTitle title={data}/>,
+            document.getElementById('examples')
+    )
+    //getDefaultProps 设置组件默认值
+    var MyTitle = React.createClass({
+        getDefaultProps:function () {
+            return {
+                title : "你好世界！"
+            }
+        },
+        render:function () {
+            return <h1>{this.props.title}</h1>;
+        }
+    })
+    ReactDOM.render(
+            <MyTitle/>,
+            document.getElementById('examples')
+    )
+    //获取真实的DOM
+    var MyComponent = React.createClass({
+        handleClick: function() {
+            this.refs.myTextInput.focus();
+        },
+        render: function() {
+            return (
+                    <div>
+                        <input type="text" ref="myTextInput" id="aa" />
+                        <input type="button" value="Focus the text input" onClick={this.handleClick} />
+                    </div>
+            );
+        }
+    });
+    ReactDOM.render(
+            <MyComponent />,
+            document.getElementById('examples')
+    );
+    //表单
+    var Input = React.createClass({
+        getInitialState: function () {
+            return {value :'Hello !'};
+        },
+        handleChange :function (event) {
+            this.setState({value :event.target.value});
+        },
+        render :function () {
+            var value = this.state.value; //不能用this.props.value读取
+            console.log(value);
+            return(
+                    <div>
+                        <input type="text" value={value} onChange={this.handleChange}/>
+                        <p>{value}</p>
+                    </div>
+            )
+        }
+    })
+    ReactDOM.render(
+            <Input/>,
+            document.getElementById('examples')
+    )
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Demo</title>
+</head>
+<script src="../js/vue.js"></script>
+<style>
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active for below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+</style>
+<body>
+<!--基础-->
+ <div id="demo">
+     <h3>1、基础</h3>
+     {{ fullName }}
+     <div v-bind:class="classObject">1212</div>
+     <div v-bind:style="styleObject">56565</div>
+     <div v-if="type === 'A'">
+         A
+     </div>
+     <div v-else-if="type === 'B'">
+         B
+     </div>
+     <div v-else-if="type === 'C'">
+         C
+     </div>
+     <div v-else>
+         Not A/B/C
+     </div>
+     <li v-for="item in items">
+         {{ item.message }}
+     </li>
+     <li v-for="(value,key,index) in object">
+         {{index}} : {{key}} : {{value}}
+     </li>
+     <li v-for="n in evenNumbers">{{ n }}</li>
+     <button v-on:click.once="clickone">只能点击一次</button>
+     <button v-on:click="greet">增加1</button>
+     这个按钮被点击了 {{counter}} 次
+     <input v-model.lazy.trim="message" placeholder="edit me">
+     <p>Message is: {{ message }}</p>
+     <hr/>
+ </div>
+<!--组件-->
+ <div id="example">
+     <h3>2、组件</h3>
+     <my-component1></my-component1>
+     <my-component2></my-component2>
+ </div>
+<div id="example-2">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+</div>
+<div id="example-3">
+    <input v-model="hello">
+    <child :message="hello" my-message="world！"></child>
+</div>
+<div id="counter-event-example">
+    <p>{{ total }}</p>
+    <button-counter @increment="incrementTotal"></button-counter>
+    <button-counter @increment="incrementTotal"></button-counter>
+</div>
+<hr/>
+<h3>3、动画</h3>
+<div id="example-4">
+    <button @click="show =!show">
+        点击切换
+    </button>
+    <transition name="slide-fade">
+        <span v-if="show">动画</span>
+    </transition>
+</div>
+<hr/>
+<h3>4、自定义指令</h3>
+<div id="example-5">
+    <input v-focus>
+</div>
+<div id="example-6">
+    <div v-demo="{name:'张三',age:'24'}"></div>
+</div>
+</body>
+
+<script>
+    //1、基础指令----------------------------
+    new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+            classObject: {
+                active: true,
+                'text-danger': true
+            },
+            styleObject: {
+                color: 'red',
+                fontSize: '18px',
+            },
+            type:"AA",
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ],
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            },
+            numbers: [1,2,3,4,5,6,7,8],
+            counter:0,
+            message:'1122'
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        },
+       methods: {
+           clickone: function(){
+               alert('只弹一次');
+           },
+           greet: function (event) {
+               this.counter += 1;
+               //console.log(event);
+           }
+       }
+    })
+
+    //2、组件--------------------------------
+    // 全局注册
+    Vue.component('my-component1', {
+        template: '<div>{{mes}}，这是一个组件内容！</div>',
+        data: function () {
+            return {
+                mes:'你好'
+            }
+        }
+    })
+    //局部注册
+    var Child ={
+        template: '<div>这是一个局部组件内容！</div>',
+    }
+    // 创建根实例
+    new Vue({
+        el: '#example',
+        components:{
+            'my-component2':Child
+        }
+    })
+
+    var data = { counter: 0 }
+    Vue.component('simple-counter', {
+        template: '<button @click="counter += 1">{{ counter }}</button>',
+        data: function () {
+            return{
+                counter: 0
+            }
+        }
+    })
+    new Vue({
+        el: '#example-2'
+    })
+    //组件通信 props传递数据
+    Vue.component('child',{
+        props:['message','myMessage'],
+        template:'<span>{{message}},{{myMessage}}</span>'
+    })
+    new Vue({
+        el:'#example-3',
+        data:function () {
+            return {
+                hello:'hello1'
+            }
+        }
+    })
+    //子-->父通信
+    Vue.component('button-counter', {
+        template: '<button @click="incrementCounter">{{ counter }}</button>',
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            incrementCounter: function () {
+                this.counter += 1
+                this.$emit('increment');
+            }
+        },
+    })
+    new Vue({
+        el: '#counter-event-example',
+        data: {
+            total: 0
+        },
+        methods: {
+            incrementTotal: function () {
+                this.total += 1
+            }
+        }
+    })
+    //动画
+    new Vue({
+        el:'#example-4',
+        data:{
+            show:true
+        }
+    })
+    //自定义指令
+    Vue.directive('focus',{
+        inserted: function (el) {
+            el.focus();
+        }
+    })
+    new Vue({
+        el:'#example-5',
+    })
+    Vue.directive('demo', function (el, binding) {
+        console.log(binding.value.name) // => "张三"
+        console.log(binding.value.age)  // => "24"
+    })
+    new Vue({
+        el:'#example-6',
+    })
+
+
+
+
+
+
+
+
+</script>
+</html>

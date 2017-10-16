@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex布局</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+
+    .wrap-box {
+        display: -webkit-box;
+        width: 500px;
+    }
+    .flex-inner {
+        -webkit-box-flex: 1;
+        display: -webkit-box;
+    }
+    .flex-item {
+        -webkit-box-flex: 1;
+        position: relative;
+        background: #FF5555;
+    }
+    .wrap-6 {
+        -webkit-box-orient: horizontal;
+    }
+    .wrap-6 .flex-inner {
+        -webkit-box-flex: 0;
+        -webkit-box-orient: vertical;
+    }
+    .wrap-6 .flex-inner:first-child {
+        width: 66.6%;
+    }
+    .wrap-6 .flex-inner:last-child {
+        width: 33.3%;
+    }
+    .wrap-6 .flex-item {
+        padding-top: 100%;
+    }
+    .wrap-6 .flex-box2 .flex-item {
+        padding-top: 50%;
+    }
+    .wrap-6 .flex-box2 {
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+    }
+    .wrap-6 .flex-inner:first-child,
+    .wrap-6 .flex-box2 .flex-item:first-child {
+        margin-right: 1px;
+    }
+    .wrap-6 .flex-box1,
+    .wrap-6 .flex-inner:last-child .flex-item:first-child,
+    .wrap-6 .flex-inner:last-child .flex-item:nth-child(2) {
+        margin-bottom: 1px;
+    }
+</style>
+<body>
+<!--手写-->
+<div>
+    <div style="width:25%;height: 50px;border: 1px solid green;float: left;">手写</div>
+    <div style="width:25%;height: 50px;border: 1px solid green;float: left;">手写</div>
+    <div style="width:25%;height: 50px;border: 1px solid green;float: left;">手写</div>
+    <div style="width:25%;height: 50px;border: 1px solid green;float: left;">手写</div>
+    <div style="width:25%;height: 50px;border: 1px solid green;float: left;">手写</div>
+</div>
+<div style="margin-top: 50px;display: inline-block;"></div>
+<hr>
+<!--bootstrap-->
+<div class="row">
+    <div class="col-xs-4" style="height: 50px;border: 1px solid red;">左边</div>
+    <div class="col-xs-4" style="height: 50px;border: 1px solid red;">中间</div>
+    <div class="col-xs-4" style="height: 50px;border: 1px solid red;">右边</div>
+</div>
+<hr>
+<!--flex-->
+<div style="width:500px;border: 1px solid red;display: flex;flex-wrap:wrap">
+    <div style="width:50%;height: 50px;border: 1px solid green;"></div>
+    <div style="width:50%;height: 50px;border: 1px solid green;"></div>
+    <div style="width:50%;height: 50px;border: 1px solid green;"></div>
+    <div style="width:50%;height: 50px;border: 1px solid green;"></div>
+    <div style="width:50%;height: 50px;border: 1px solid green;"></div>
+    <div style="width:50%;height: 50px;border: 1px solid green;"></div>
+</div>
+<hr>
+<!--仿手Q-->
+<div style="width: 500px;height: 500px;border: 1px solid #8c8c8c;">
+    <div style="width: 66.6%;height: 66.6%; background: #FF5555;border: 1px solid white; float: left;"></div>
+    <div style="width: 33.3%;height: 33.3%;background: #FF5555;border: 1px solid white;float: left;"></div>
+    <div style="width: 33.3%;height: 33.3%;background: #FF5555;border: 1px solid white;float: left;"></div>
+    <div style="width: 33.3%;height: 33.3%;background: #FF5555;border: 1px solid white;float: left;"></div>
+    <div style="width: 33.3%;height: 33.3%;background: #FF5555;border: 1px solid white;float: left;"></div>
+    <div style="width: 33.3%;height: 33.3%;background: #FF5555;border: 1px solid white;float: left;"></div>
+</div>
+<hr>
+
+<div class="wrap-box wrap-6">
+    <div class="flex-inner">
+        <div class="flex-box1 flex-item"></div>
+        <div class="flex-box2">
+            <div class="flex-item"></div>
+            <div class="flex-item"></div>
+        </div>
+    </div>
+    <div class="flex-inner">
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+    </div>
+</div>
+<hr>
+
+
+</body>
+<script>
+
+    function open() {
+        open2();
+        console.log("123");
+    }
+    function open2(nun) {
+        var p = new Promise(function(resolve, reject){
+            //做一些异步操作
+            if(nun >1){
+                setTimeout(function(){
+                    resolve('数字大于1');
+                }, 1000);
+            }else {
+                setTimeout(function(){
+                    reject('数字小于1');
+                }, 1000);
+            }
+
+        });
+        return p;
+    }
+
+    open2(1).then(function (e) {
+        console.log(e);
+    },function (e) {
+        console.log(e);
+    })
+    open();
+
+
+
+
+
+
+</script>
+
+</html>

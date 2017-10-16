@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>css3</title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div id="clickDiv">123</div>
+
+<div class="tab-nav j-tab-nav">
+    <a href="javascript:void(0);" class="current"></a>
+    <a href="javascript:void(0);">1</a>
+    <a href="javascript:void(0);">1</a>
+    <a href="javascript:void(0);">1</a>
+    <a href="javascript:void(0);">1</a>
+    <a href="javascript:void(0);">1</a>
+    <a href="javascript:void(0);">1</a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+    <a href="javascript:void(0);"></a>
+</div>
+<div style="width:100px; height:100px; border-radius:50%; overflow:hidden;">
+<img src="http://imgtu.5011.net/uploads/content/20160814/2209031471104350.jpg" style="width: 100px;height: 100px;" alt=""/>
+</div>
+
+<img src="http://imgtu.5011.net/uploads/content/20160814/2209031471104350.jpg" style="width: 100px;height: 100px;border-radius: 50%" alt=""/>
+
+<img src="http://imgtu.5011.net/uploads/content/20160814/2209031471104350.jpg" style="width: 100px;height: 100px;border-radius: 100px" alt=""/>
+
+
+</body>
+<script type="text/javascript">
+
+    $('.j-tab-nav').find('a').click(function(){
+        alert("哈哈哈哈哈 ")
+
+    })
+
+
+    var div = document.getElementById("clickDiv");
+    div.addEventListener("click", function(evt) {
+        console.log("evt", evt);
+    });
+
+    document.getElementById('clickDiv').style.fontSize='32px';
+
+
+</script>
+</html>
