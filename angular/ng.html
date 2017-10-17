@@ -11,6 +11,15 @@
     <input type="radio" name="radios" ng-model="state" value="0" />
     <span>{{ state }}</span>
 
+   <div>
+       <ul>
+           <li ng-repeat="item in arryA">{{item}}
+               <a href="###" ng-click="upRecord(arryA,$index)">上移</a>
+               <a href="###" ng-click="downRecord(arryA,$index)">下移</a>
+           </li>
+       </ul>
+   </div>
+
 </body>
 <script>
     angular.module('myNg',[]).controller('ngCtrl',function($scope,$log){
@@ -52,6 +61,31 @@
 
         var flag = false;
         flag ? console.log('xxx') : angular.noop();
+
+
+
+        $scope.arryA =[1,2,3,4,5,6,7,8,9];
+        var swapItems = function(arr, index1, index2) {
+            arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+            return arr;
+        };
+
+        // 上移
+        $scope.upRecord = function(arr, $index) {
+            if($index == 0) {
+                return;
+            }
+            swapItems(arr, $index, $index - 1);
+        };
+
+        // 下移
+        $scope.downRecord = function(arr, $index) {
+            if($index == arr.length -1) {
+                return;
+            }
+            swapItems(arr, $index, $index + 1);
+        };
+
 
 
 
