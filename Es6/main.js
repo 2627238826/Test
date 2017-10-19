@@ -1,3 +1,4 @@
+//基础变量&数据解耦--------------------------------
 let [x, y, z] = ['hell', 'word', '111'];
 console.log(x, y, z);
 let { fo, ba } = { fo: "aaa", ba: "bbb" };
@@ -51,6 +52,7 @@ function m2({ x, y } = { x: 0, y: 0 }) {
 console.log(m1());// [0, 0]
 console.log(m2());// [0, 0]
 
+//箭头函数-----------------------------------------
 let fun = v => v;
 console.log(fun(555));
 let sum = (num1, num2) => num1 + num2;
@@ -59,24 +61,8 @@ var getTempItem = id => ({ id: id, name: "Temp" });
 console.log(getTempItem(10));
 [1, 2, 3].map(x => console.log(x * x));
 
-function sum2(x, y) {
-    if (y > 0) {
-        return sum(x + 1, y - 1);
-    } else {
-        return x;
-    }
-}
-sum2(1, 100000);
 
-function abc(num) {
-    return num;
-}
-var cdf = {
-    abc // fun:abc
-}
-console.log(cdf.abc(123));
-
-//模板字符串
+//模板字符串-------------------------------------
 const name = "Nick";
 console.log(`Hello ${name}, the following expression is equal to four : ${2+2}`);
 
@@ -126,6 +112,7 @@ setName();
 import {area,circumference} from './user.js';
 console.log('圆面积：' + area(4));
 console.log('圆周长：' + circumference(14));
+
 import * as circle from './user.js';
 console.log('圆面积：' + circle.area(4));
 console.log('圆周长：' + circle.circumference(14));
