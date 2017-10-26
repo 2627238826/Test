@@ -16,24 +16,21 @@
         padding:0px;
         font-size: 14px;
     }
-    .container{
-        /*height: 100%;*/
-    }
     .header img{
         width: 100%;
-        height: 25%;
+        display: block;
     }
     .content{
         display: flex;
         display: -webkit-flex; /* Safari */
-        height: 100%;
         margin: 0 15px;
     }
     .content-left{
         width: 30%;
         display: flex;
-        display: -webkit-flex;  /* Safari */
+        display: -webkit-flex; /* Safari */
         align-items: center; /* 垂直居中 */
+
     }
     .content-left img{
         width: 100%;
@@ -46,7 +43,7 @@
         width: 60%;
         display: flex;
         display: -webkit-flex; /* Safari */
-        align-items: center;  /* 垂直居中 */
+        align-items: center; /* 垂直居中 */
     }
     .tag{
         border-radius: 5px;
@@ -59,7 +56,7 @@
         position:absolute;
         right:100%;
         top:50%;
-        margin-top: -10px;
+        margin-top: -8px;
         border-width:10px;
         border-style:solid;
         border-color:transparent;
@@ -75,14 +72,17 @@
         width: 1px;
         margin: 0 auto;
         position: relative;
+        /* display: flex;
+        display: -webkit-flex; Safari */
+        /* display: inline-block; */
     }
     .horizontal-line{
         position: absolute;
         width: 10px;
-        border: 1px solid #D0D0D0;
+        border-bottom: 1px solid #D0D0D0;
         top: 50%;
-        left: -15px;
-        margin-top: 5px;
+        right: 100%;
+        margin-top: 8px;
     }
     .circular img{
         position: absolute;
@@ -102,7 +102,8 @@
         margin-bottom: 20px;
     }
     .lg-blue{
-        color: #81BBEE;
+        color: #4ba7f7
+    ;
     }
     /*********公共* end ********/
 </style>
@@ -113,19 +114,19 @@
     </div>
     <div class="content">
         <div class="content-left lg-margin-top10">
-            <img id="content-left-img" src="img/liveGuide/pic01.png">
+            <img src="img/liveGuide/pic01.png">
         </div>
         <div class="content-center">
             <div class="vertical-line">
                 <div class="horizontal-line"></div>
                 <div class="circular">
-                    <img class="circular-img" src="img/liveGuide/dot_blue.png">
+                    <img src="img/liveGuide/dot_blue.png">
                 </div>
             </div>
         </div>
         <div class="content-right lg-margin-top10">
             <div class="tag">
-                <div class="tag-text">1，在应用管理界面选择“<span class="lg-blue">直播</span>”进入后，打开“<span class="lg-blue">直播开关</span>”，复制下方链接发送到电脑端复制下方链接发送到电脑端复制下方链接发送到电脑端复制下方链接发送到电脑端复制下方链接发送到电脑端复制下方链接发送到电脑端</div>
+                <div class="tag-text">1，在应用管理界面选择“<span class="lg-blue">直播</span>”进入后，打开“<span class="lg-blue">直播开关</span>”，复制下方链接发送到电脑端</div>
             </div>
         </div>
     </div>
@@ -161,7 +162,7 @@
         </div>
         <div class="content-right lg-margin-top10">
             <div class="tag">
-                <div class="tag-text">3，工作台中选择“<span class="lg-blue">直播</span>”界面点击右上角，“<span class="lg-blue">创建直播信息</span>”按键，填写直播设置信息并保存复制下方链接发送到电脑端复制下方链接发送到电脑端复制下方链接发送到电脑端复制下方链接发送到电脑端复制下方链接发送到电脑端</div>
+                <div class="tag-text">3，工作台中选择“<span class="lg-blue">直播</span>”界面点击右上角，“<span class="lg-blue">创建直播信息</span>”按键，填写直播设置信息并保存</div>
             </div>
         </div>
     </div>
@@ -222,15 +223,19 @@
 </div>
 </body>
 <script>
-
-    //给中间线设定动态高度 =>>> class='content'元素高度
-    window.onload = function(){
+    //动态获取 class="content" 赋值给到 vertical-line
+    window.onload=function(){
         var verticalLine =document.getElementsByClassName('vertical-line');
         for(var i=0;i<verticalLine.length;i++){
-            document.getElementsByClassName('vertical-line')[i].style.height =document.getElementsByClassName('content')[i].offsetHeight+"px";
-//          document.getElementsByClassName('tag')[i].style.height=contentleftimg+'px';
+            document.getElementsByClassName('vertical-line')[i].style.height = document.getElementsByClassName('content')[i].offsetHeight+'px';
+            // document.getElementsByClassName('tag')[i].style.height=contentleftimg+20+'px';
+            //小横线的宽度
+            document.getElementsByClassName('horizontal-line')[i].style.width =(document.getElementsByClassName('content-center')[0].offsetWidth)/2 +'px';
         }
+
     }
+
+
 
 </script>
 </html>
