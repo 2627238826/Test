@@ -18,6 +18,8 @@
 
 </body>
 <script>
+    //事件委托-----------------
+    //(找到父元素，添加监听器...)
     var ul =document.querySelector('ul');
     ul.addEventListener('click', function(event) {
         if (event.target.tagName.toLowerCase() === 'li') {
@@ -25,8 +27,22 @@
             alert("你点击了："+ event.target.outerText);
         }
     });
-    $('li').click(function(){
+    $('ul').on('click','li',function(){
         alert($(this).text());
     })
+    //-end-----------------------
+    //传统-----------------------
+    for(var i=0;i<document.getElementsByTagName("li").length;i++){
+        (function (i) {
+            document.getElementsByTagName("li")[i].onclick=function () {
+                alert(document.getElementsByTagName("li")[i].innerHTML);
+            }
+        })(i)
+    }
+    $('ul li').click(function(){//(给列表的每一项分别绑定了点击事件，这样做的弊端在于，增加了内存)
+        alert($(this).text());
+    })
+
+
 </script>
 </html>
