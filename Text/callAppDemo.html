@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5唤起APP</title>
+</head>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<body>
+
+</body>
+<script>
+    $("a[href^='schema://']").on('click',function(e){
+     e.preventDefault();
+     if(isWeixinBrowser() || isQQBrowser()){
+         $('.layer').show(); //友好的提示页面
+     }else{
+         if(isAndroid){
+             //android
+             //此操作会调起app并阻止接下来的js执行
+             $('body').append("<iframe src='schema://openapp' style='display:none' target='' ></iframe>");
+
+             //没有安装应用会执行下面的语句
+             setTimeout(function(){window.location = 'http://www.yourdlurl.com/download.html'},600);
+         }else{
+             //ios
+             window.location = 'schema://openapp';
+             setTimeout(function(){window.location = 'itms-apps://itunes.apple.com/app/idXXXXXXX'},25);
+         }
+     }
+ })
+ function isWeixinBrowser() {
+     return (/micromessenger/.test(ua)) ? true : false;
+ }
+ function isQQBrowser() {
+     return (ua.match(/QQ/i) == "qq") ? true : false;
+ }
+</script>
+</html>
