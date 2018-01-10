@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码倒计时</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style>
+    .content{
+        border: 1px solid #dddddd;
+        padding: 20px 30px;
+        width: 500px;
+        height: 80px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -40px;
+        margin-left: -250px;
+    }
+</style>
+<body>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入验证码">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" id="code" type="button" onclick="getCode()">点击获取验证码</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var time =6;
+    var o =document.getElementById('code')
+    function getCode() {
+        if(time==0){
+            o.removeAttribute("disabled");
+            o.innerHTML='点击获取验证码';
+            time=6;
+        }else {
+            o.setAttribute("disabled", true);
+            o.innerHTML='还剩'+time+'秒';
+            var s =setTimeout(function () {
+                time--;
+                getCode();
+            },1000)
+        }
+
+    }
+</script>
+</html>
