@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>rem</title>
+    <title>rem测试</title>
 </head>
 <style>
     html,body{
@@ -12,27 +12,39 @@
         font-size: 100px;
     }
     .content{
-        background: green;
+        background: #3c763d;
         width: 3.45rem;
         height: 1rem;
-        margin: 0 0.15rem;
+        margin: 0.15rem;
         font-size: 0.16rem;
     }
-    .margin{
-        margin-bottom: 0.16rem;
+    .c-left{
+        float: left;
+        width: 1rem;
+        height: 1rem;
+        background: #D0D0D0;
+    }
+    .c-right{
+        float: left;
+        width: 2.45rem;
+        height: 1rem;
+        background: #ddd;
     }
 </style>
 <body>
-<div class="content margin">
-    rem测试rem测试
-</div>
 <div class="content">
-    rem测试rem测试
+    <div class="c-left">
+        img区域
+    </div>
+    <div class="c-right">
+        内容区域
+    </div>
+
 </div>
 </body>
 <script>
     var deviceWidth =document.body.clientWidth;
-    document.documentElement.style.fontSize = deviceWidth/3.75 +'px';
+    document.documentElement.style.fontSize = deviceWidth/3.75 +'px'; //设计稿是375px
 </script>
 
 </html>
