@@ -35,8 +35,8 @@
       <file leaf-file-name="rem.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Text/rem.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+            <state relative-caret-position="615">
+              <caret line="46" column="81" lean-forward="true" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -138,7 +138,7 @@
     <handled-path value="$PROJECT_DIR$/angular2.0/angular2-quickstart1/node_modules" />
     <handled-path value="$PROJECT_DIR$/angular2.0/angular2-quickstart2/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1" />
     <option name="y" value="1" />
     <option name="width" value="1678" />
@@ -444,12 +444,12 @@
       <workItem from="1514451564666" duration="136000" />
       <workItem from="1515487436276" duration="179000" />
       <workItem from="1515563445339" duration="2621000" />
-      <workItem from="1516005150951" duration="4693000" />
+      <workItem from="1516005150951" duration="4811000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="445415000" />
+    <option name="totallyTimeSpent" value="445533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,7 +461,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4538545" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -851,8 +851,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Text/rem.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        <state relative-caret-position="615">
+          <caret line="46" column="81" lean-forward="true" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
           <folding />
         </state>
       </provider>
