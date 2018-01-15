@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>rem</title>
+</head>
+<style>
+    html,body{
+        margin: 0;
+        padding: 0;
+        font-size: 100px;
+    }
+    .content{
+        background: green;
+        width: 3.45rem;
+        height: 1rem;
+        margin: 0 0.15rem;
+        font-size: 0.16rem;
+    }
+    .margin{
+        margin-bottom: 0.16rem;
+    }
+</style>
+<body>
+<div class="content margin">
+    rem测试rem测试
+</div>
+<div class="content">
+    rem测试rem测试
+</div>
+</body>
+<script>
+    var deviceWidth =document.body.clientWidth;
+    document.documentElement.style.fontSize = deviceWidth/3.75 +'px';
+</script>
+
+</html>
