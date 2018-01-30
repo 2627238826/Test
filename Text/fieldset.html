@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="disableAll">Disable all</button>
+<button id="enableAll">Enable all</button>
+<form>
+    <fieldset id="myFieldset">
+        <legend>表单信息</legend>
+        <div>
+            <input type="text" value="some text"/>
+        </div>
+        <div>
+            <label>checkbox 1 <input type="checkbox"/></label>
+            <label>checkbox 2 <input type="checkbox"/></label>
+        </div>
+        <div>
+            <label>radio button 1 <input name="radio" type="radio"/></label>
+            <label>radio button 2 <input name="radio" type="radio"/></label>
+        </div>
+        <div>
+            <select>
+                <option>option 1</option>
+                <option>option 2</option>
+            </select>
+        </div>
+        <div><textarea>a textarea</textarea></div>
+        <div><input type="button" value="a button"/></div>
+    </fieldset>
+</form>
+</body>
+<script>
+    var myFieldset = document.getElementById("myFieldset");
+    disableAll.onclick = function () { myFieldset.disabled = true; }
+    enableAll.onclick = function () { myFieldset.disabled = false; }
+</script>
+</html>
