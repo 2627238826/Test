@@ -61,10 +61,11 @@
             {{index}} : {{key}} : {{value}}
         </li>
         <li v-for="n in evenNumbers">{{ n }}</li>
-        <button v-on:click.once="clickone">只能点击一次</button>
+        <button @click.once="clickone">只能点击一次</button>
         <button v-on:click="greet">增加1</button> 这个按钮被点击了 {{counter}} 次
         <input v-model.lazy.trim="message" placeholder="edit me">
         <p>Message is: {{ message }}</p>
+        <input v-model.lazy="age">{{age}}
         <hr/>
     </div>
     <!--组件-->
@@ -74,7 +75,7 @@
         <my-component2></my-component2>
     </div>
     <div id="example-2">
-        <simple-counter></simple-counter>
+        <simple-counter>121122</simple-counter>
         <simple-counter></simple-counter>
         <simple-counter></simple-counter>
     </div>
@@ -84,8 +85,8 @@
     </div>
     <div id="counter-event-example">
         <p>{{ total }}</p>
-        <button-counter @increment="incrementTotal"></button-counter>
-        <button-counter @increment="incrementTotal"></button-counter>
+        <button-counter @increment="incrementTotal" :total="total"></button-counter>
+        <button-counter @increment="incrementTotal" :total="total"></button-counter>
     </div>
     <hr/>
     <h3>3、动画</h3>
@@ -135,7 +136,8 @@
             },
             numbers: [1, 2, 3, 4, 5, 6, 7, 8],
             counter: 0,
-            message: '1122'
+            message: '1122',
+            age:''
         },
         computed: {
             fullName: function() {
@@ -148,9 +150,7 @@
             }
         },
         methods: {
-            clickone: function() {
-                alert('只弹一次');
-            },
+            clickone:()=>alert('只弹一次'),
             greet: function(event) {
                 this.counter += 1;
                 //console.log(event);
@@ -209,7 +209,8 @@
         })
         //子-->父通信
     Vue.component('button-counter', {
-        template: '<button @click="incrementCounter">{{ counter }}</button>',
+        template: '<button @click="incrementCounter">{{ total }}</button>',
+        props:['total'],
         data: function() {
             return {
                 counter: 0
@@ -217,7 +218,6 @@
         },
         methods: {
             incrementCounter: function() {
-                this.counter += 1
                 this.$emit('increment');
             }
         },
