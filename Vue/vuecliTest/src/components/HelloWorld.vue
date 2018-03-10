@@ -80,6 +80,10 @@
         </a>
       </li>
     </ul>
+    <hr>
+    <div>
+      <a href="#/count">点击进入vuex状态管理demo</a>
+    </div>
   </div>
 </template>
 
