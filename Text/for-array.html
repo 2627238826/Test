@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>遍历</title>
+    </head>
+    <body>
+       
+    </body>
+     <script type="text/javascript">
+            var hasRoles = [
+                    {code:"10002",name:"农牧发货员"},
+                    {code:"10003",name:"资料编辑员"},
+                    {code:"10004",name:"电话会议灰度测试员"}
+                ];
+
+    
+            var allRoles = [
+                {code:"10004",name:"电话会议灰度测试员"},
+                {code:"101",name:"超级管理员"},
+                {code:"102",name:"系统管理员"},
+                {code:"103",name:"部门管理员"},
+                {code:"1001",name:"医药代表"},
+                {code:"1002",name:"市场人员"},
+                {code:"1003",name:"数据管理员"},
+                {code:"1004",name:"财务主管"},
+                {code:"1005",name:"推广经理"},
+                {code:"1006",name:"分管品种审核员"},
+                {code:"10001",name:"农牧会员管理员"},
+                {code:"10002",name:"农牧发货员"},
+                {code:"10003",name:"资料编辑员"}
+            ];
+
+
+            console.log("for--------------------------------"); 
+            for (var i = 0; i < hasRoles.length; i++) {
+                console.log(allRoles[i]); 
+            }
+            console.log("map--------------------------------"); 
+            hasRoles.map(function(elem, index, arr){
+                console.log(elem);
+                console.log(index);
+            })
+            console.log("forEach--------------------------------"); 
+            hasRoles.forEach(function(elem, index, arr){
+                console.log(elem);
+                console.log(index);
+            })
+            console.log("filter--------------------------------"); 
+            var abc = [1, 2, 3, 4, 5].filter(function(elem, index, arr){
+               return (elem > 3);
+            })
+            console.log(abc);
+             
+
+
+
+
+
+
+        </script>
+</html>
