@@ -52,6 +52,16 @@ function m2({ x, y } = { x: 0, y: 0 }) {
 console.log(m1());// [0, 0]
 console.log(m2());// [0, 0]
 
+let birth = '2000/01/01';
+let Person ={
+    name:'张三',
+    birth,
+    hello(){
+        console.log(this.name +','+this.birth);
+    }
+}
+Person.hello();
+
 //箭头函数-----------------------------------------
 let fun = v => v;
 console.log(fun(555));
