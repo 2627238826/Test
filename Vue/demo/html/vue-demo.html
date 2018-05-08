@@ -140,8 +140,15 @@
             age:''
         },
         computed: {
-            fullName: function() {
-                return this.firstName + ' ' + this.lastName
+            fullName:{
+                get(){
+                    return this.firstName + ' ' + this.lastName
+                },
+                set(newValue){
+                    this.firstName =newValue;
+                }
+
+              
             },
             evenNumbers: function() {
                 return this.numbers.filter(function(number) {
@@ -153,6 +160,8 @@
             clickone:()=>alert('只弹一次'),
             greet: function(event) {
                 this.counter += 1;
+                this.fullName ="123"
+                alert(this.fullName)
                 //console.log(event);
             }
         }
