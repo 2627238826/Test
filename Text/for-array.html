@@ -51,6 +51,22 @@
                return (elem > 3);
             })
             console.log(abc);
+
+            
+            var newArray = hasRoles.map(function(elem, index, arr){
+                return {
+                         ...elem,
+                         age:index,
+                    }
+            })
+            console.log(newArray);
+            //箭头函数
+            var newArray2 = hasRoles.map((elem, index, arr)=>({
+                ...elem,
+                age:index,
+                name:elem.name, 
+            }))
+            console.log(newArray2);
              
 
 
