@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -68,8 +68,32 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return firstName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return lastName; });
+/* harmony export (immutable) */ __webpack_exports__["a"] = area;
+/* harmony export (immutable) */ __webpack_exports__["b"] = circumference;
+var firstName = 'Michael';
+var lastName = 'Jackson';
+
+
+
+function area(radius) {
+    return Math.PI * radius * radius;
+}
+function circumference(radius) {
+    return 2 * Math.PI * radius;
+}
+
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_js__ = __webpack_require__(0);
+//基础变量&数据解耦--------------------------------
 let [x, y, z] = ['hell', 'word', '111'];
 console.log(x, y, z);
 let { fo, ba } = { fo: "aaa", ba: "bbb" };
@@ -123,6 +147,17 @@ function m2({ x, y } = { x: 0, y: 0 }) {
 console.log(m1());// [0, 0]
 console.log(m2());// [0, 0]
 
+let birth = '2000/01/01';
+let Person ={
+    name:'张三',
+    birth,
+    hello(){
+        console.log(this.name +','+this.birth);
+    }
+}
+Person.hello();
+
+//箭头函数-----------------------------------------
 let fun = v => v;
 console.log(fun(555));
 let sum = (num1, num2) => num1 + num2;
@@ -131,24 +166,8 @@ var getTempItem = id => ({ id: id, name: "Temp" });
 console.log(getTempItem(10));
 [1, 2, 3].map(x => console.log(x * x));
 
-function sum2(x, y) {
-    if (y > 0) {
-        return sum(x + 1, y - 1);
-    } else {
-        return x;
-    }
-}
-sum2(1, 100000);
 
-function abc(num) {
-    return num;
-}
-var cdf = {
-    abc // fun:abc
-}
-console.log(cdf.abc(123));
-
-//模板字符串
+//模板字符串-------------------------------------
 const name = "Nick";
 console.log(`Hello ${name}, the following expression is equal to four : ${2+2}`);
 
@@ -199,35 +218,13 @@ setName();
 console.log('圆面积：' + Object(__WEBPACK_IMPORTED_MODULE_0__user_js__["a" /* area */])(4));
 console.log('圆周长：' + Object(__WEBPACK_IMPORTED_MODULE_0__user_js__["b" /* circumference */])(14));
 
+
 console.log('圆面积：' + __WEBPACK_IMPORTED_MODULE_0__user_js__["a" /* area */](4));
 console.log('圆周长：' + __WEBPACK_IMPORTED_MODULE_0__user_js__["b" /* circumference */](14));
 
 
 
 
-
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return firstName; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return lastName; });
-/* harmony export (immutable) */ __webpack_exports__["a"] = area;
-/* harmony export (immutable) */ __webpack_exports__["b"] = circumference;
-var firstName = 'Michael';
-var lastName = 'Jackson';
-
-
-
-function area(radius) {
-    return Math.PI * radius * radius;
-}
-function circumference(radius) {
-    return 2 * Math.PI * radius;
-}
 
 
 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="renderer" content="webkit" />
+<head>
+    <title>hash demo</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei";
+            transition: background-color .3s;
+        }
+        .bg-org {
+            color: #383c3c;
+            background-color: #FF6633;
+        }
+        .bg-blue {
+            color: #fbfaf5;
+            background-color: #6699FF;
+        }
+        .time {
+            margin-top: 20%;
+            text-align: center;
+            font-size: 4em;
+            font-weight: 100;
+        }
+        .switch {
+            margin: auto;
+            width: 30px;
+            height: 30px;
+            position:absolute;
+            bottom:25%;
+            left:0;
+            right:0;
+            cursor:pointer;
+            box-shadow: 0 0 0 5px rgba(255,255,255,.6);
+            border-radius: 50%;
+            transition: box-shadow .1s;
+        }
+        .switch:hover {
+            box-shadow: 0 0 0 5px rgba(255,255,255,.75);
+        }
+        .switch:active {
+            box-shadow: 0 0 0 30px rgba(255,255,255,.4);
+        }
+    </style>
+</head>
+
+<body class="bg-org">
+<h1 id="time" class="time">Loading...</h1>
+<div id="switch" class="switch"></div>
+<script>
+    var time = $('#time');
+    function $(selector) {return document.querySelector(selector);}
+    // 显示当前时间
+    setInterval(function(){
+        var date = new Date(),
+            format = function(n) {return n<10?'0'+n:n};
+        time.innerHTML = format(date.getHours()) + ' : ' + format(date.getMinutes()) + ' : ' + format(date.getSeconds()); 
+    }, 500);
+
+    // 监听onhashchange事件
+    window.addEventListener("hashchange", function(e) {
+        // 获取hash值判断页面状态
+        var flag = location.hash && location.hash.substring(1);
+        $('body').className = 'bg-'+flag || ($('body').className=='bg-org'?'bg-blue':'bg-org');
+    }, false);
+    $('#switch').addEventListener('click', toggleState, false);
+    function toggleState(e) {
+        var flag = $('body').className=='bg-org'?'bg-blue':'bg-org';
+
+        // 在url中写入新的hash值
+        location.hash = flag.split('-')[1];
+        $('body').className = flag;
+    }
+</script>
+</body>
+</html>
