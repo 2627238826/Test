@@ -1,85 +1,26 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <plyr>
+    <video>
+        <source src="http://community.test.file.dachentech.com.cn/lhCzZQTFSWkmRpfGKjwS_k87FRVN_mp4" type="video/mp4" />
+        <source src="http://community.test.file.dachentech.com.cn/lhCzZQTFSWkmRpfGKjwS_k87FRVN_mp4" type="video/ogg" />
+    </video>
+</plyr>
+<!-- audio element -->
+<plyr>
+    <audio>
+        <source src="http://community.test.file.dachentech.com.cn/lhCzZQTFSWkmRpfGKjwS_k87FRVN_mp4" type="audio/mp3" />
+        <source src="audio.ogg" type="audio/ogg" />
+    </audio>
+</plyr>
+<plyr>
+    <audio>
+        <source src="http://community.test.file.dachentech.com.cn/lhCzZQTFSWkmRpfGKjwS_k87FRVN_mp4" type="audio/mp3" />
+        <source src="audio.ogg" type="audio/ogg" />
+    </audio>
+</plyr>
+
+
     <hr>
     <div>
       <a href="#/count">点击进入vuex状态管理demo</a>
@@ -92,7 +33,33 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      // Array of objects with path to video files and format.
+            videos: [
+                { src: 'path/to/video.mp4', format: 'mp4' },
+                { src: 'path/to/video.webm', format: 'webm' }
+            ],
+
+            // Object with subtitles label, source, and language.
+            subtitles: {
+                label: "English Captions",
+                src: "path/to/captions.vtt",
+                srclang: "en"
+            },
+
+            // Array of objects with path to audio files and format.
+            tracks: [
+                { src: 'path/to/audio.mp3', format: 'mp3' },
+                { src: 'path/to/audio.ogg', format: 'ogg' }
+            ],
+
+            // YouTube video ID or video URL.
+            // https://www.youtube.com/watch?v=bTqVqk7FSmY & https://youtu.be/bTqVqk7FSmY would have the same effect.
+            youtubeID: 'bTqVqk7FSmY',
+
+            // Vimeo video ID or video URL.
+            // https://vimeo.com/147865858 would have the same effect.
+            vimeoID: '147865858'
     }
   }
 }
