@@ -3,9 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VuePlyr from 'vue-plyr';
-import 'vue-plyr/dist/vue-plyr.css';
-Vue.use(VuePlyr)
 
 Vue.config.productionTip = false
 
