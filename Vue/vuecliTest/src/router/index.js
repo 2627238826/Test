@@ -15,7 +15,7 @@ export default new Router({
     path: '/count',
     component: Count
    },{
-    path: '/sewisePlayer',
+    path: '/qiniuplayer',
     component: qiniuPlayer
    }
 ]

@@ -19,10 +19,13 @@
         STRONG	跑马灯文字加粗 -->
 
 
-    <marquee behavior="scroll" direction="up"  scrollamount="3"  scrolldelay="10" width=100% height=20>
-        <p>文字滚动——1</p>
-        <p>文字滚动——2</p>
-        <p>文字滚动——3</p>
+    <marquee behavior="scroll" direction="up" scrollamount="3" behavior="alternate" scrolldelay="0" width=100% height=50 vspace="20" hspace="20" onmouseover=this.stop()  onmouseout=this.start()>
+        <div>文字滚动——1</div>
+        <div>文字滚动——2</div>
+        <div>文字滚动——3</div>
+        <div>文字滚动——4</div>
+        <div>文字滚动——5</div>
+        <div>文字滚动——6</div>
     </marquee>
 </body>
 

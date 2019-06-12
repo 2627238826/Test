@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "plyr": "^3.3.21",
+    "sass-loader": "^7.1.0",
     "video.js": "^7.0.5",
     "videojs-contrib-hls": "^5.14.1",
     "vue": "^2.5.2",
