@@ -1,0 +1,114 @@
+----------------------------------《工具》---------------------------------------------------------------
+企业邮箱:
+账号:chenyl@dachentech.com.cn
+密码:dc2627238826@qq.com   testlearning.mediportal.com.cn
+
+SourceTree:
+账号：chenyiliang
+密码：chenyiliang
+
+bitbucket
+2627238826@qq.com
+dachen10086
+chenyiliang5
+
+大辰科技公众号
+liull@dachentech.com.cn
+Dachen2016
+
+doctorLive项目zip版本: https://preapi.mediportal.com.cn/activity/webapp/www/YSQ.json
+
+host:路径 C:\Windows\System32\drivers\etc
+
+构建账号：
+37：
+dev  dex@123
+   rtmp flv
+test/test2017@123
+
+126:
+chenyiliang  chenyiliang
+
+谷歌翻墙：https://pac.itzmx.com/abc.pac
+
+npm 内网地址:   http://192.168.3.8:4873/
+
+------------------------------------------------------------------
+
+ 七牛上传地址
+https://portal.qiniu.com/bucket/appdist/resource 
+
+ 
+存储空间： appdist
+user: mobile@dachentech.com.cn
+passwd: test@dachen2017
+
+pre ftp 
+ftp://pre.mediportal.com.cn 
+
+user:dachen
+passwd: dachen@2018
+
+https://preapi.mediportal.com.cn/activity/webapp/test/YSQ.json
+
+
+--------------------------------《开发》----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+主题地址： http://flatfull.com/themes/angulr/angular/#/app/docs
+导医地址：http://localhost/health/content/guider      13923043382    123456
+aip文档：http://192.168.3.201:8091/apidoc/
+http://192.168.3.201/jenkins/
+
+
+======================================================《拆分后》==============================================================================================================================================================================
+
+每个环境对应域名：注意要https
+测试环境(126)：https://test.mediportal.com.cn
+生产测试环境(65)：https://pre.mediportal.com.cn
+231: http://devapps.dachentech.com/
+正式：http://www.mediportal.com.cn
+
+--------------------------------------------------------------------------------    
+126环境----服务器地址
+  药店圈：http://120.24.94.126/drug/web/#/signin
+  运营平台：http://120.24.94.126/health/web/check/#/access/signin
+  药企: http://120.24.94.126/drug/web/#/app/enterprise/breedLibrary/breed （http://120.24.94.126/drugorg/web/#/signin 首页）      
+  微信：http://120.24.94.126/wechat/web/#/findDoctor
+
+
+
+37环境：----本地开发（nginx） 192.168.3.231
+ 药店圈： http://localhost:8087/web_drug/#/signin
+ 运营平台：http://localhost:8087/web_health/check/#/access/signin
+ 药企（品种）：http://localhost:8087/web_drug/#/app/enterprise/breedLibrary/breed
+
+
+
+
+126环境：----本地开发（nginx） 120.24.94.126
+ 药店圈： http://localhost:8086/web_drug/#/signin -------------------------- 19100000003
+ 运营平台：http://localhost:8086/web_health/check/#/access/signin ---------------------------------- 13751132072  18900000001
+ 药企：http://localhost:8086/drugorg/#/signin ---------------------------------------------- 12345678913  19110000001  13751132072
+ 微信: http://test.mediportal.com.cn/#/storeDetails/0/58535374b5222539a2beac90/0
+
+
+生产测试环境：----服务器地址
+ 药店圈： http://120.25.84.65/drug/web/#/signin
+ 运营平台：http://120.25.84.65/health/web/check/#/access/signin
+ 药企：http://120.25.84.65/drugorg/web/#/signin
+
+
+ 医生圈：
+  http://localhost:8087/doctororg/#/access/signin
+
+  http://192.168.3.231/doctororg/web/#/access/signin
+
+
+
+
+
+微信: http://test.mediportal.com.cn/#/storeDetails/0/58535374b5222539a2beac90/0 
+
+
+注册药店圈体验账号：http://www.mediportal.com.cn/drug/drugCompanyEmployee/visitor/2/telephone/{telephone}?access_token=7f876c7ed585485fa439885caa1fc5a9 
+
