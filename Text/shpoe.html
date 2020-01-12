@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>遍历</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    var arr = [{
+            ID: "1",
+            id: "001"
+        },
+        {
+            ID: "1",
+            id: "001"
+        },
+        {
+            ID: "1",
+            id: "002"
+        },
+        {
+            ID: "2",
+            id: "003"
+        },
+        {
+            ID: "2",
+            id: "003"
+        },
+        {
+            ID: "2",
+            id: "004"
+        },
+        {
+            ID: "3",
+            id: "006"
+        }
+    ];
+
+
+
+
+
+    var st = {}; //商店
+    for (var i = 0; i < arr.length; i++) {
+        var obj = arr[i];
+        var key = obj["ID"];
+        if (st[key] != 0 && !st[key]) {
+            st[key] = obj["id"];
+        } else {
+            st[key] = st[key] + "," + obj["id"];
+        }
+    }
+
+    console.log(st);
+
+    var sp = []; //数据重组
+    for (key in st) {
+        sp.push({
+            ID: key,
+            id: st[key].split(',')
+        });
+    }
+
+    // console.log(sp);
+
+</script>
+</html>
