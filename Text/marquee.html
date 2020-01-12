@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>marquee跑马灯</title>
+</head>
+<body>
+        <!-- behavior=scroll, slide, alternate	跑马方式：循环绕行，只跑一次就停住，来回往复运动
+        direction=left,right	跑马方向：从左向右，从右向左
+        loop=100	跑马次数：循环100次，如不写默认为一直循环
+        width=100%,height=200	跑马范围：宽为100%，高为200像素
+        scrollamount=20	跑马速度：数越大越快
+        scrolldelay=500	跑马延时：毫秒数，利用它可实现跃进式滚动
+        hspace=20，vspace=20	跑马区域与其它区域间的空白大小
+        bgcolor=#00FFCC	跑马区域的背景颜色
+        face=楷体_GB2312	跑马灯文字字体
+        color=#ff0000	跑马灯文字颜色
+        size=3	跑马灯文字字号
+        STRONG	跑马灯文字加粗 -->
+
+
+    <marquee behavior="scroll" direction="up" scrollamount="3" behavior="alternate" scrolldelay="0" width=100% height=50 vspace="20" hspace="20" onmouseover=this.stop()  onmouseout=this.start()>
+        <div>文字滚动——1</div>
+        <div>文字滚动——2</div>
+        <div>文字滚动——3</div>
+        <div>文字滚动——4</div>
+        <div>文字滚动——5</div>
+        <div>文字滚动——6</div>
+    </marquee>
+</body>
+
+</html>
